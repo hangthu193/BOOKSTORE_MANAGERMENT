@@ -54,7 +54,6 @@
             android:layout_height="35dp"
             android:background="@drawable/buttonitems"
             android:text="Xóa"
-
             app:backgroundTint="@null" />
     </LinearLayout>
 
