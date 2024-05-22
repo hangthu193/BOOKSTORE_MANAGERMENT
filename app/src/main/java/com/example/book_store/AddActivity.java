@@ -1,13 +1,12 @@
 package com.example.book_store;
 
+import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -21,51 +20,62 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class AddActivity extends AppCompatActivity {
     String DB_PATH_SUFFIX = "/databases/";
     SQLiteDatabase database=null;
     String DATABASE_NAME="qlSach.db";
-    //Khai báo ListView
-    ListView lv;
-    ArrayList<TacGia> mylist;
-    MyAdapter myadapter;
+    Button btnxn, btnhuy;
+    EditText editID, edittenTG, editgt;
 
-    Button btnthem;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        btnthem =(Button) findViewById(R.id.btnthem);
-        btnthem.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_add);
+        addControls();
+        addEvents();
+
+    }
+    private void addEvents() {
+        btnxn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AddActivity.class);
-                startActivity(intent);
+                insert();
             }
         });
-        lv = (ListView) findViewById(R.id.lv);
-        mylist = new ArrayList<>();
-        myadapter = new MyAdapter(MainActivity.this, mylist);
-        lv.setAdapter(myadapter);
+        btnhuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cancel();
+            }
+        });
+    }
+    private void addControls() {
+        btnxn = (Button) findViewById(R.id.btnxn);
+        btnhuy = (Button) findViewById(R.id.btnhuy);
+        editID = (EditText) findViewById(R.id.editID);
+        edittenTG = (EditText) findViewById(R.id.edittenTG);
+        editgt = (EditText) findViewById(R.id.editgt);
+
+
+    }
+    private void insert(){
+        String MaTG = editID.getText().toString();
+        String ten = edittenTG.getText().toString();
+        String gt = editgt.getText().toString();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("MaTG: ",MaTG);
+        contentValues.put("TenTG: ",ten);
+        contentValues.put("GioiTinh: ",gt);
         processCopy();
-
         database = openOrCreateDatabase("qlSach.db",MODE_PRIVATE, null);
-
-// Truy vấn CSDL và cập nhật hiển thị lên Listview
-        Cursor c = database.query("TacGia",null,null,null,null,null,null);
-        mylist.clear();
-        for(int i = 0; i<c.getCount();i++){
-            c.moveToPosition(i);
-            String id = c.getString(0);
-            String ten = c.getString(1);
-            String gioitinh = c.getString(2);
-            mylist.add(new TacGia(id, ten, gioitinh));
-
-        }
-
-        myadapter.notifyDataSetChanged();
+        database.insert("TacGia",null, contentValues);
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+    private void cancel(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
     private void processCopy() {
 //private app
@@ -108,4 +118,5 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
 }
