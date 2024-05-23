@@ -10,25 +10,24 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+public class Forgot_password extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Button btn_forgotpass;
+        Button btn_updatepass;
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_forgot_password);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        btn_forgotpass = findViewById(R.id.btn_Forgotpass);
-        btn_forgotpass.setOnClickListener(v -> {
-            Intent myIntent = new Intent(MainActivity.this,Forgot_password.class);
+        btn_updatepass = findViewById(R.id.btn_Forgotpass);
+        btn_updatepass.setOnClickListener(v -> {
+            Intent myIntent = new Intent(Forgot_password.this,newpass.class);
             startActivity(myIntent);
 
         });
     }
-
 }
