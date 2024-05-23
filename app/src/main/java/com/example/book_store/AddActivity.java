@@ -64,12 +64,12 @@ public class AddActivity extends AppCompatActivity {
         String ten = edittenTG.getText().toString();
         String gt = editgt.getText().toString();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("MaTG: ",MaTG);
-        contentValues.put("TenTG: ",ten);
-        contentValues.put("GioiTinh: ",gt);
+        contentValues.put("MaTG",MaTG);
+        contentValues.put("TenTG",ten);
+        contentValues.put("GioiTinh",gt);
         processCopy();
         database = openOrCreateDatabase("qlSach.db",MODE_PRIVATE, null);
-        database.insert("TacGia",null, contentValues);
+        database.insert("TacGia",null,contentValues);
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
