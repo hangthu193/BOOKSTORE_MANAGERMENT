@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,14 +24,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.channels.AsynchronousFileChannel;
 import java.util.ArrayList;
 
 public class MyAdapter extends BaseAdapter {
-    String DB_PATH_SUFFIX = "/databases/";
-    SQLiteDatabase database=null;
-    String DATABASE_NAME="qlSach.db";
     Activity context;
     ArrayList<TacGia> mylist;
+
 
     public MyAdapter(Activity context, ArrayList<TacGia> mylist) {
         this.context = context;
@@ -94,59 +94,23 @@ public class MyAdapter extends BaseAdapter {
                         
                     }
                 });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
         return row;
     }
     private void delete(String MaTG){
-        processCopy();
-        database = openOrCreateDatabase("qlSach.db",MODE_PRIVATE, null);
+        SQLiteDatabase database = Database.initDatabase(context,"qlSach.db");
         database.delete("TacGia","MaTG = ?", new String[]{MaTG});
-
-    }
-    private void processCopy() {
-//private app
-        File dbFile = getDatabasePath(DATABASE_NAME);
-        if (!dbFile.exists())
-        {
-            try{CopyDataBaseFromAsset();
-                Toast.makeText(this, "Copying sucess from Assets folder", Toast.LENGTH_LONG).show();
-            }
-            catch (Exception e){
-                Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
-            }
+        Cursor c = database.rawQuery("SELECT * FROM TacGia", null);
+        mylist.clear();
+        while(c.moveToNext()){
+            String maTG = c.getString(0);
+            String tenTG = c.getString(1);
+            String gt = c.getString(2);
+            mylist.add(new TacGia(maTG,tenTG,gt));
         }
-    }
-    private String getDatabasePath() {
-        return getApplicationInfo().dataDir + DB_PATH_SUFFIX + DATABASE_NAME;
-    }
-
-    private ApplicationInfo getApplicationInfo() {
-        return null;
-    }
-
-    public void CopyDataBaseFromAsset(){
-        try {
-            InputStream myInput;
-            myInput = getAssets().open(DATABASE_NAME);
-// Path to the just created empty db
-            String outFileName = getDatabasePath();
-// if the path doesn't exist first, create it
-            File f = new File(getApplicationInfo().dataDir + DB_PATH_SUFFIX);
-            if (!f.exists())
-                f.mkdir();
-// Open the empty db as the output stream
-            OutputStream myOutput = new FileOutputStream(outFileName);
-            int size = myInput.available();
-            byte[] buffer = new byte[size];
-            myInput.read(buffer);
-            myOutput.write(buffer);
-// Close the streams
-            myOutput.flush();
-            myOutput.close();
-            myInput.close();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
+        notifyDataSetChanged();
     }
 }

@@ -23,9 +23,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class updateAtivity extends AppCompatActivity {
-
-    String DB_PATH_SUFFIX = "/databases/";
-    SQLiteDatabase database=null;
     String DATABASE_NAME="qlSach.db";
     Button btnxn, btnhuy;
     EditText editID, edittenTG, editgt;
@@ -59,8 +56,7 @@ public class updateAtivity extends AppCompatActivity {
     private void initUI() {
         Intent intent = getIntent();
         MaTG = intent.getStringExtra("MaTG");
-        processCopy();
-        database = openOrCreateDatabase("qlSach.db",MODE_PRIVATE, null);
+        SQLiteDatabase database = Database.initDatabase(this, DATABASE_NAME);
         Cursor c = database.rawQuery("SELECT * FROM TacGia where MaTG = ?", new String[]{MaTG});
         c.moveToFirst();
         String maTG = c.getString(0);
@@ -86,8 +82,7 @@ public class updateAtivity extends AppCompatActivity {
         ContentValues contentValues = new ContentValues();
         contentValues.put("TenTG",ten);
         contentValues.put("GioiTinh",gt);
-        processCopy();
-        database = openOrCreateDatabase("qlSach.db",MODE_PRIVATE, null);
+        SQLiteDatabase database = Database.initDatabase(this,"qlSach.db");
         database.update("TacGia", contentValues,"MaTG = ?",new String[]{MaTG});
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -96,45 +91,5 @@ public class updateAtivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-    private void processCopy() {
-//private app
-        File dbFile = getDatabasePath(DATABASE_NAME);
-        if (!dbFile.exists())
-        {
-            try{CopyDataBaseFromAsset();
-                Toast.makeText(this, "Copying sucess from Assets folder",
-                        Toast.LENGTH_LONG).show();
-            }
-            catch (Exception e){
-                Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
-            }
-        }
-    }
-    private String getDatabasePath() {
-        return getApplicationInfo().dataDir + DB_PATH_SUFFIX + DATABASE_NAME;
-    }
-    public void CopyDataBaseFromAsset(){
-        try {
-            InputStream myInput;
-            myInput = getAssets().open(DATABASE_NAME);
-// Path to the just created empty db
-            String outFileName = getDatabasePath();
-// if the path doesn't exist first, create it
-            File f = new File(getApplicationInfo().dataDir + DB_PATH_SUFFIX);
-            if (!f.exists())
-                f.mkdir();
-// Open the empty db as the output stream
-            OutputStream myOutput = new FileOutputStream(outFileName);
-            int size = myInput.available();
-            byte[] buffer = new byte[size];
-            myInput.read(buffer);
-            myOutput.write(buffer);
-// Close the streams
-            myOutput.flush();
-            myOutput.close();
-            myInput.close();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-    }
+
 }
