@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Book_Store</string>
+    <string name="SignUp">Đăng ký</string>
+    <string name="Username">Tên đăng nhập</string>
+    <string name="Email">Email</string>
+    <string name="Password">Mật khẩu</string>
+    <string name="ConfirmPassword">Xác nhận mật khẩu</string>
+    <string name="Signup_btn">Đăng ký</string>
+    <string name="HaveAnAccount">Bạn đã có tài khoản?</string>
+    <string name="Login_click">Đăng nhập</string>
+
+    <string name="Login">Đăng nhập</string>
+    <string name="Login_btn">Đăng nhập</string>
+
+    <string name="two_image">Ảnh 2</string>
+    <string name="nine_image">Ảnh 9</string>
+    <string name="three_image">Ảnh 3</string>
+    <string name="eight_image">Ảnh 8</string>
 </resources>
