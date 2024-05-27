@@ -11,75 +11,92 @@
     <View
         android:id="@+id/view"
         android:layout_width="411dp"
-        android:layout_height="131dp"
+        android:layout_height="70dp"
         android:background="#F6EBB0"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
         android:fontFamily="@font/actor"
         android:text="QUẢN LÝ SÁCH"
         android:textColor="#000000"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="78dp"
-        tools:layout_editor_absoluteY="50dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/btn_them"
+        app:layout_constraintStart_toEndOf="@+id/btn_quaylai2"
+        app:layout_constraintTop_toTopOf="@+id/btn_them"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageButton
+        android:id="@+id/btn_them"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/custom_btnquaylai"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/add" />
 
     <ImageButton
         android:id="@+id/btn_quaylai2"
         android:layout_width="60dp"
         android:layout_height="50dp"
         android:background="@drawable/custom_btnquaylai"
-        app:srcCompat="@drawable/back"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="39dp" />
-
-    <ImageButton
-        android:id="@+id/btn_them"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/custom_btnquaylai"
-        app:srcCompat="@drawable/add"
-        tools:layout_editor_absoluteX="327dp"
-        tools:layout_editor_absoluteY="39dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView5"
+        app:layout_constraintVertical_bias="0.476"
+        app:srcCompat="@drawable/back" />
 
     <TableLayout
+        android:id="@+id/tableLayout"
         android:layout_width="410dp"
         android:layout_height="50dp"
         android:background="#A1A1A1"
         android:gravity="center"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="144dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view">
 
         <TableRow>
 
             <TextView
-                android:layout_width="105dp"
+                android:layout_width="95dp"
                 android:gravity="center"
                 android:text="Mã sách"
                 android:textSize="20sp" />
 
             <TextView
-                android:layout_width="110dp"
+                android:layout_width="100dp"
                 android:gravity="center"
                 android:text="Tên sách"
                 android:textSize="20sp" />
 
             <TextView
-                android:layout_width="95dp"
+                android:layout_width="90dp"
                 android:gravity="center"
                 android:text="Giá bán"
                 android:textSize="20sp" />
 
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="95dp"
                 android:gravity="center"
                 android:text="Thao tác"
                 android:textSize="20sp" />
         </TableRow>
 
     </TableLayout>
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
