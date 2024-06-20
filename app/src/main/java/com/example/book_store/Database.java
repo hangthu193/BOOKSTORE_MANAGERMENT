@@ -10,6 +10,10 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class Database {
+    private static SQLiteDatabase sqLiteDatabase;
+    public static SQLiteDatabase getDatabase() {
+        return sqLiteDatabase;
+    }
     public static SQLiteDatabase initDatabase(Activity activity, String databaseName){
         try{
             String outFileName = activity.getApplicationInfo().dataDir + "/databases/"+databaseName;
