@@ -1,38 +1,30 @@
 package com.example.book_store;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import com.example.book_store.dao.DaoTacGia;
 
 public class updateAtivity extends AppCompatActivity {
-    String DATABASE_NAME="qlSach.db";
     Button btnxn, btnhuy;
     EditText editID, edittenTG, editgt;
-
+    DaoTacGia daoTacGia;
     String MaTG = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_ativity);
+
+        // Khởi tạo DAO
+        daoTacGia = new DaoTacGia(this);
+
         addControls();
         initUI();
         addEvents();
@@ -45,6 +37,7 @@ public class updateAtivity extends AppCompatActivity {
                 update();
             }
         });
+
         btnhuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,40 +49,50 @@ public class updateAtivity extends AppCompatActivity {
     private void initUI() {
         Intent intent = getIntent();
         MaTG = intent.getStringExtra("MaTG");
-        SQLiteDatabase database = Database.initDatabase(this, DATABASE_NAME);
-        Cursor c = database.rawQuery("SELECT * FROM TacGia where MaTG = ?", new String[]{MaTG});
-        c.moveToFirst();
-        String maTG = c.getString(0);
-        String tenTG = c.getString(1);
-        String gt = c.getString(2);
-        editID.setText(maTG);
-        edittenTG.setText(tenTG);
-        editgt.setText(gt);
+
+        // Lấy thông tin Tác giả từ CSDL bằng DAO và hiển thị lên giao diện
+        TacGia tacGia = daoTacGia.getTacGia(MaTG);
+        if (tacGia != null) {
+            editID.setText(tacGia.getMaTG());
+            edittenTG.setText(tacGia.getTenTG());
+            editgt.setText(tacGia.getGioiTinh());
+        }
     }
 
     private void addControls() {
-        btnxn = (Button) findViewById(R.id.btnxn);
-        btnhuy = (Button) findViewById(R.id.btnhuy);
-        editID = (EditText) findViewById(R.id.editID);
-        edittenTG = (EditText) findViewById(R.id.edittenTG);
-        editgt = (EditText) findViewById(R.id.editgt);
-
-
+        btnxn = findViewById(R.id.btnxn);
+        btnhuy = findViewById(R.id.btnhuy);
+        editID = findViewById(R.id.editID);
+        edittenTG = findViewById(R.id.edittenTG);
+        editgt = findViewById(R.id.editgt);
     }
-    private void update(){
+
+    private void update() {
         String ten = edittenTG.getText().toString();
         String gt = editgt.getText().toString();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("TenTG",ten);
-        contentValues.put("GioiTinh",gt);
-        SQLiteDatabase database = Database.initDatabase(this,"qlSach.db");
-        database.update("TacGia", contentValues,"MaTG = ?",new String[]{MaTG});
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-    private void cancel(){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+
+        // Tạo đối tượng TacGia với thông tin đã cập nhật
+        TacGia tacGia = new TacGia(MaTG, ten, gt);
+
+        // Thực hiện cập nhật vào CSDL bằng DAO
+        boolean isUpdated = daoTacGia.updateTacGia(tacGia);
+
+        if (isUpdated) {
+            Toast.makeText(this, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "Cập nhật thất bại", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+
+        // Đóng activity updateAtivity
+        finish();
     }
 
+    private void cancel() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 }

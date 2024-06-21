@@ -1,70 +1,89 @@
 package com.example.book_store;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import com.example.book_store.dao.DaoTacGia;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    String DATABASE_NAME="qlSach.db";
-    SQLiteDatabase database;
-    //Khai báo ListView
+    private static final int REQUEST_CODE_ADD = 1;
+    private ActivityResultLauncher<Intent> addActivityResultLauncher;
+
+    DaoTacGia daoTacGia;
     ListView lv;
     ArrayList<TacGia> mylist;
     MyAdapter myadapter;
 
     Button btnthem;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnthem =(Button) findViewById(R.id.btnthem);
-        btnthem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AddActivity.class);
-                startActivity(intent);
-            }
-        });
-        lv = (ListView) findViewById(R.id.lv);
+
+        // Initialize DAO for database operations
+        daoTacGia = new DaoTacGia(this);
+
+        // Initialize ListView and adapter
+        lv = findViewById(R.id.lv);
         mylist = new ArrayList<>();
         myadapter = new MyAdapter(MainActivity.this, mylist);
         lv.setAdapter(myadapter);
 
-        database = Database.initDatabase(this, DATABASE_NAME);
+        // Button to open AddActivity
+        btnthem = findViewById(R.id.btnthem);
+        btnthem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AddActivity.class);
+                addActivityResultLauncher.launch(intent);
+            }
+        });
 
-// Truy vấn CSDL và cập nhật hiển thị lên Listview
-        Cursor c = database.query("TacGia",null,null,null,null,null,null);
+        // Load data from database and update ListView
+        loadData();
+
+        // Register ActivityResultLauncher for handling AddActivity result
+        addActivityResultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK) {
+                        // Reload data if AddActivity returns RESULT_OK
+                        loadData();
+                    }
+                }
+        );
+
+        // ListView item click listener to handle updates (if needed)
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TacGia selectedTacGia = mylist.get(position);
+                openUpdateActivity(selectedTacGia.getMaTG());
+            }
+        });
+    }
+
+    private void loadData() {
         mylist.clear();
-        for(int i = 0; i<c.getCount();i++){
-            c.moveToPosition(i);
-            String id = c.getString(0);
-            String ten = c.getString(1);
-            String gioitinh = c.getString(2);
-            mylist.add(new TacGia(id, ten, gioitinh));
-
-        }
-
+        mylist.addAll(daoTacGia.getAllTacGia());
         myadapter.notifyDataSetChanged();
     }
 
+    private void openUpdateActivity(String MaTG) {
+        Intent intent = new Intent(MainActivity.this, updateAtivity.class);
+        intent.putExtra("MaTG", MaTG);
+        startActivity(intent);
+    }
 }

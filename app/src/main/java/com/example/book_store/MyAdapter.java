@@ -19,6 +19,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.book_store.dao.DaoTacGia;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -30,11 +32,13 @@ import java.util.ArrayList;
 public class MyAdapter extends BaseAdapter {
     Activity context;
     ArrayList<TacGia> mylist;
+    DaoTacGia daoTacGia;
 
 
     public MyAdapter(Activity context, ArrayList<TacGia> mylist) {
         this.context = context;
         this.mylist = mylist;
+        daoTacGia = new DaoTacGia(context);
     }
 
     @Override
@@ -85,13 +89,21 @@ public class MyAdapter extends BaseAdapter {
                 builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        delete(tacgia.MaTG);
+
+                        boolean isDeleted = daoTacGia.deleteTacGia(tacgia.getMaTG());
+                        if (isDeleted) {
+                            Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
+                            mylist.remove(tacgia); // Remove from local list
+                            notifyDataSetChanged(); // Update ListView
+                        } else {
+                            Toast.makeText(context, "Xóa thất bại", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
                 builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        
+                        dialog.dismiss();
                     }
                 });
                 AlertDialog dialog = builder.create();
@@ -100,17 +112,5 @@ public class MyAdapter extends BaseAdapter {
         });
         return row;
     }
-    private void delete(String MaTG){
-        SQLiteDatabase database = Database.initDatabase(context,"qlSach.db");
-        database.delete("TacGia","MaTG = ?", new String[]{MaTG});
-        Cursor c = database.rawQuery("SELECT * FROM TacGia", null);
-        mylist.clear();
-        while(c.moveToNext()){
-            String maTG = c.getString(0);
-            String tenTG = c.getString(1);
-            String gt = c.getString(2);
-            mylist.add(new TacGia(maTG,tenTG,gt));
-        }
-        notifyDataSetChanged();
-    }
+
 }
