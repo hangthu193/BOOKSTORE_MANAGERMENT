@@ -13,6 +13,12 @@
         android:theme="@style/Theme.Book_Store"
         tools:targetApi="31">
         <activity
+            android:name=".QuanlyKho"
+            android:exported="false" />
+        <activity
+            android:name=".KhoActivity"
+            android:exported="false" />
+        <activity
             android:name=".updatePass"
             android:exported="false" />
         <activity

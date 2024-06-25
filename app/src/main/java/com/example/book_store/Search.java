@@ -16,7 +16,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class Search extends AppCompatActivity {
-    CardView tacgiaCard;
+    CardView tacgiaCard, khoCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +28,14 @@ public class Search extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Search.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        khoCard = findViewById(R.id.khoCard);
+        khoCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Search.this, QuanlyKho.class);
                 startActivity(intent);
             }
         });

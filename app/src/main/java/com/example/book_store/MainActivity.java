@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -36,13 +35,13 @@ public class MainActivity extends AppCompatActivity {
         daoTacGia = new DaoTacGia(this);
 
         // Initialize ListView and adapter
-        lv = findViewById(R.id.lv);
+        lv = findViewById(R.id.lvkho);
         mylist = new ArrayList<>();
         myadapter = new MyAdapter(MainActivity.this, mylist);
         lv.setAdapter(myadapter);
 
         // Button to open AddActivity
-        btnthem = findViewById(R.id.btnthem);
+        btnthem = findViewById(R.id.btnthemkho);
         btnthem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
