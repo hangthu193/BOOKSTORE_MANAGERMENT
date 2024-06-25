@@ -5,11 +5,11 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".book.Book">
+    tools:context=".category.Category">
 
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
+        android:id="@+id/toolbar4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#F6EBB0"
@@ -24,27 +24,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/actor"
-        android:text="Quản lý sách"
+        android:text="Quản lý thể loại"
         android:textColor="#000000"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
-        app:layout_constraintEnd_toStartOf="@+id/btn_themsach"
-        app:layout_constraintStart_toEndOf="@+id/btn_quaylai2"
-        app:layout_constraintTop_toTopOf="@+id/toolbar2" />
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar4"
+        app:layout_constraintEnd_toStartOf="@+id/btn_themtheloai"
+        app:layout_constraintStart_toEndOf="@+id/btn_quaylai3"
+        app:layout_constraintTop_toTopOf="@+id/toolbar4" />
 
     <ImageButton
-        android:id="@+id/btn_themsach"
+        android:id="@+id/btn_themtheloai"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/custom_btnquaylai"
-        app:layout_constraintEnd_toEndOf="@+id/toolbar2"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar4"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/add" />
 
     <ImageButton
-        android:id="@+id/btn_quaylai2"
+        android:id="@+id/btn_quaylai3"
         android:layout_width="60dp"
         android:layout_height="50dp"
         android:background="@drawable/custom_btnquaylai"
@@ -55,7 +55,7 @@
         app:srcCompat="@drawable/back" />
 
     <TableLayout
-        android:id="@+id/tbly_book"
+        android:id="@+id/tbly_category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -63,7 +63,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar2">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar4">
     </TableLayout>
 
 
