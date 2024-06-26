@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    tools:context=".EmployeeDetailsActivity">
+
+    <ImageView
+        android:id="@+id/imgUser"
+        android:layout_width="match_parent"
+        android:layout_height="258dp"
+        android:layout_marginTop="10dp"
+        app:srcCompat="@drawable/user" />
+
+    <TextView
+        android:id="@+id/tvTenNhanVien"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textColor="@color/Purple"
+        android:text="TextView" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="20dp">
+
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:text="@string/id"
+                android:textColor="@color/Gray"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvMaNhanVien"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="TextView"
+                android:textColor="#0771C5"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <TextView
+                android:id="@+id/tv2"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:text="Tên Đăng Nhập: "
+                android:textColor="@color/Gray"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvTenDangNhap"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="TextView"
+                android:textColor="#0771C5"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv3"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:text="Địa Chỉ: "
+                android:textColor="@color/Gray"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDiaChi"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="TextView"
+                android:textColor="#0771C5"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv4"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:text="Giới Tính: "
+                android:textColor="@color/Gray"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvGioiTinh"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="TextView"
+                android:textColor="#0771C5"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv5"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:text="Số điện thoại: "
+                android:textColor="@color/Gray"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvSoDienThoai"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="TextView"
+                android:textColor="#0771C5"
+                android:textSize="20sp" />
+        </TableRow>
+
+    </TableLayout>
+
+    <Button
+        android:id="@+id/btnSuaThongTinCaNhan"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_bg"
+        android:text="@string/btn_edit_profile"
+        android:textColor="@color/White"
+        android:textSize="20sp"
+        android:contentDescription="@string/btn_edit_profile" />
+
+
+
+</LinearLayout>

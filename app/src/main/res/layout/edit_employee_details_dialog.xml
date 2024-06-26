@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    tools:context=".EditEmployeeDetailsDialog">
+
+    <ImageView
+        android:id="@+id/imgUser"
+        android:layout_width="match_parent"
+        android:layout_height="258dp"
+        app:srcCompat="@drawable/user" />
+
+    <EditText
+        android:id="@+id/etTenNhanVienMoi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textColor="@color/Purple" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="20dp">
+
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:text="@string/id"
+                android:textColor="@color/Gray"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etMaNhanVien"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="#0771C5"
+                android:textSize="20sp"
+                android:enabled="false" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <TextView
+                android:id="@+id/tv2"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:text="Tên Đăng Nhập: "
+                android:textColor="@color/Gray"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etTenDangNhapMoi"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="#0771C5"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv3"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:text="Địa Chỉ: "
+                android:textColor="@color/Gray"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etDiaChiMoi"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="#0771C5"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv4"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:text="Giới Tính: "
+                android:textColor="@color/Gray"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etGioiTinhMoi"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="#0771C5"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv5"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:text="Số điện thoại: "
+                android:textColor="@color/Gray"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etSoDienThoaiMoi"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="#0771C5"
+                android:textSize="20sp" />
+        </TableRow>
+
+    </TableLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:paddingBottom="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnHuy"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="2"
+            android:text="@string/btn_cancel"
+            android:textSize="18sp"
+            android:textColor="@color/White"
+            android:backgroundTint="@color/Gray"
+            android:layout_marginEnd="10dp"
+            />
+
+        <Button
+            android:id="@+id/btnXacNhan"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="3"
+            android:backgroundTint="@color/Purple"
+            android:textSize="18sp"
+            android:text="@string/btn_confirm"
+            android:textColor="@color/White"
+            android:layout_marginStart="10dp"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>
