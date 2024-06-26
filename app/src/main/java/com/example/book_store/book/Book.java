@@ -42,6 +42,7 @@ import com.example.book_store.MainActivity;
 import com.example.book_store.R;
 import com.example.book_store.adapter.SelectedAdapter;
 import com.example.book_store.model.BookProperty;
+import com.example.book_store.model.Selected;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

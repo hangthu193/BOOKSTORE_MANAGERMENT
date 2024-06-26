@@ -1,4 +1,4 @@
-package com.example.book_store.book;
+package com.example.book_store.model;
 
 public class Selected {
     private String id;

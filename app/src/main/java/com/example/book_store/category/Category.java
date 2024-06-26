@@ -25,12 +25,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.book_store.DAO.DaoSach;
 import com.example.book_store.DAO.DaoTheLoai;
 import com.example.book_store.DataBase;
 import com.example.book_store.MainActivity;
 import com.example.book_store.R;
-import com.example.book_store.book.Selected;
+import com.example.book_store.model.Selected;
 
 import java.util.List;
 

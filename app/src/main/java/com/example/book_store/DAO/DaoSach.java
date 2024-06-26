@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 
 import com.example.book_store.DataBase;
-import com.example.book_store.book.Selected;
+import com.example.book_store.model.Selected;
 import com.example.book_store.model.BookDetailProperty;
 import com.example.book_store.model.BookProperty;
 

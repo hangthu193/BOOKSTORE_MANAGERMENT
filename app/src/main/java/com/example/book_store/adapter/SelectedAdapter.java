@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.book_store.R;
-import com.example.book_store.book.Selected;
+import com.example.book_store.model.Selected;
 
 import java.util.List;
 

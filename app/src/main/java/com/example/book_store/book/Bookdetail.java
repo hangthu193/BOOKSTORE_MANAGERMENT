@@ -39,8 +39,8 @@ import com.example.book_store.DAO.DaoSach;
 import com.example.book_store.DataBase;
 import com.example.book_store.R;
 import com.example.book_store.adapter.SelectedAdapter;
-import com.example.book_store.category.Category;
 import com.example.book_store.model.BookDetailProperty;
+import com.example.book_store.model.Selected;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

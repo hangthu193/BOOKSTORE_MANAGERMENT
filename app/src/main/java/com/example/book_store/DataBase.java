@@ -5,14 +5,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteStatement;
-import android.widget.Toast;
 
-import com.example.book_store.category.Category;
-import com.example.book_store.model.BookDetailProperty;
-import com.example.book_store.model.BookProperty;
-import com.example.book_store.book.Selected;
-import com.example.book_store.model.CategoryProperty;
+import com.example.book_store.model.Selected;
 
 import java.io.File;
 import java.io.FileOutputStream;
