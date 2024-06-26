@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="8dp"
-    android:background="@drawable/bg_white"
+    android:background="@drawable/bg_dialog"
     tools:layout_editor_absoluteX="12dp"
     tools:layout_editor_absoluteY="12dp">
 
@@ -23,7 +23,7 @@
         app:layout_constraintStart_toEndOf="@+id/imgbtn_back"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/matheloai"
         android:layout_width="200dp"
         android:layout_height="35dp"
@@ -31,8 +31,9 @@
         android:layout_marginEnd="36dp"
         android:background="@drawable/custom_edittext"
         android:ems="10"
-        android:inputType="text"
-        android:textSize="20sp"
+        android:gravity="center_vertical"
+        android:textColor="#000000"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -78,7 +79,7 @@
         android:layout_marginTop="35dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/custom_btn"
-        android:text="Cập nhật"
+        android:text="Xác nhận"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="20sp"

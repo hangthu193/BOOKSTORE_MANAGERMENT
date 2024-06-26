@@ -5,7 +5,7 @@
     android:layout_marginHorizontal="8dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_white"
+    android:background="@drawable/bg_dialog"
     tools:layout_editor_absoluteX="12dp"
     tools:layout_editor_absoluteY="12dp">
 
@@ -223,7 +223,7 @@
         android:layout_marginTop="35dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/custom_btn"
-        android:text="Cập nhật"
+        android:text="Xác nhận"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="20sp"

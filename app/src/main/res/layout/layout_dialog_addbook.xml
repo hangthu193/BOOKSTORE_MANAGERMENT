@@ -6,7 +6,7 @@
     android:paddingBottom="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_white"
+    android:background="@drawable/bg_dialog"
     tools:layout_editor_absoluteX="12dp"
     tools:layout_editor_absoluteY="12dp">
 
@@ -229,7 +229,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
             android:background="@drawable/custom_btn"
-            android:text="Thêm sách"
+            android:text="Xác nhận"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />

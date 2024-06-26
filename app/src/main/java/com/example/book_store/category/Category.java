@@ -6,7 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -26,12 +25,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.book_store.DAO.DaoSach;
+import com.example.book_store.DAO.DaoTheLoai;
 import com.example.book_store.DataBase;
 import com.example.book_store.MainActivity;
 import com.example.book_store.R;
-import com.example.book_store.book.Book;
-import com.example.book_store.book.BookProperty;
-import com.example.book_store.book.Bookdetail;
 import com.example.book_store.book.Selected;
 
 import java.util.List;
@@ -39,7 +37,7 @@ import java.util.List;
 public class Category extends AppCompatActivity {
     private DataBase dbHelper;
     private SQLiteDatabase db;
-
+    private DaoTheLoai daoTheLoai;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ImageButton btn_themtheloai;
@@ -51,7 +49,7 @@ public class Category extends AppCompatActivity {
 
         dbHelper = new DataBase();
         db = dbHelper.initDatabase(this, "qlSach.db");
-
+        daoTheLoai= new DaoTheLoai(this);
         btn_quaylai3 = findViewById(R.id.btn_quaylai3);
         btn_quaylai3.setOnClickListener(v -> {
             Intent myIntent = new Intent(Category.this, MainActivity.class);
@@ -75,6 +73,24 @@ public class Category extends AppCompatActivity {
             return insets;
         });
 
+    }
+    private boolean validateCategoryInputs(EditText matheloai, EditText tentheloai) {
+        String maTheLoaiValue = matheloai.getText().toString().trim();
+        String tenTheLoaiValue = tentheloai.getText().toString().trim();
+
+        if (maTheLoaiValue.isEmpty()) {
+            matheloai.setError("Mã thể loại không được để trống");
+            matheloai.requestFocus();
+            return false;
+        }
+
+        if (tenTheLoaiValue.isEmpty()) {
+            tentheloai.setError("Tên thể loại không được để trống");
+            tentheloai.requestFocus();
+            return false;
+        }
+
+        return true;
     }
 
     private void openAddCategory(int gravity, SQLiteDatabase db){
@@ -115,9 +131,10 @@ public class Category extends AppCompatActivity {
         btn_addtheloai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (validateCategoryInputs(matheloai,tentheloai)) {
                 dbHelper = new DataBase();
-
-                boolean insertCategory= dbHelper.insertCategory(db,matheloai.getText().toString(),tentheloai.getText().toString());
+                daoTheLoai= new DaoTheLoai(Category.this);
+                boolean insertCategory= daoTheLoai.insertCategory(db,matheloai.getText().toString(),tentheloai.getText().toString());
 //               = addBook.themVaoCSDL("1","1","1","1","1","1","1");
                 if (insertCategory){
                     Toast.makeText(getApplicationContext(), "Thêm thể loại thành công!", Toast.LENGTH_SHORT).show();
@@ -126,7 +143,7 @@ public class Category extends AppCompatActivity {
                 }
                 else    {
                     Toast.makeText(Category.this, "Thêm thể loại không thành công!", Toast.LENGTH_SHORT).show();
-                }
+                }}
 
             }
         });

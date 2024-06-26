@@ -36,10 +36,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.book_store.DAO.DaoSach;
 import com.example.book_store.DataBase;
 import com.example.book_store.MainActivity;
 import com.example.book_store.R;
 import com.example.book_store.adapter.SelectedAdapter;
+import com.example.book_store.model.BookProperty;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -50,6 +52,7 @@ import java.util.List;
 public class Book extends AppCompatActivity {
     private DataBase dbHelper;
     private SQLiteDatabase db;
+    private DaoSach daosach;
     private Spinner spnTacgia;
     private Spinner spnTheLoai;
     private Spinner spnNhaXB;
@@ -76,9 +79,9 @@ public class Book extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        daosach =new DaoSach(this);
 
-
-        List<BookProperty> booksList = dbHelper.getAllBooks(db);
+        List<BookProperty> booksList = daosach.getAllBooks(db);
         populateTable(booksList);
 
 
@@ -112,7 +115,67 @@ public class Book extends AppCompatActivity {
         }, nam, thang, ngay);
         datePickerDialog.show();
     }
+    private boolean validateInputs(EditText masach, EditText tensach, EditText giaban, EditText soluong) {
+        String maSachValue = masach.getText().toString().trim();
+        String tenSachValue = tensach.getText().toString().trim();
+        String giaBanValue = giaban.getText().toString().trim();
+        String soLuongValue = soluong.getText().toString().trim();
 
+        if (maSachValue.isEmpty()) {
+            masach.setError("Mã sách không được để trống");
+            masach.requestFocus();
+            return false;
+        }
+
+        if (tenSachValue.isEmpty()) {
+            tensach.setError("Tên sách không được để trống");
+            tensach.requestFocus();
+            return false;
+        }
+
+        if (giaBanValue.isEmpty()) {
+            giaban.setError("Giá bán không được để trống");
+            giaban.requestFocus();
+            return false;
+        }
+        if (soLuongValue.isEmpty()) {
+            soluong.setError("Số lượng không được để trống");
+            soluong.requestFocus();
+            return false;
+        }
+
+        int giaBanInt;
+        try {
+            giaBanInt = Integer.parseInt(giaBanValue);
+        } catch (NumberFormatException e) {
+            giaban.setError("Giá bán phải là số nguyên");
+            giaban.requestFocus();
+            return false;
+        }
+
+        if (giaBanInt > 100000000) {
+            giaban.setError("Giá bán không được vượt quá 100.000.000");
+            giaban.requestFocus();
+            return false;
+        }
+
+        int soLuongInt;
+        try {
+            soLuongInt = Integer.parseInt(soLuongValue);
+        } catch (NumberFormatException e) {
+            soluong.setError("Số lượng phải là số nguyên");
+            soluong.requestFocus();
+            return false;
+        }
+
+        if (soLuongInt > 10000) {
+            soluong.setError("Số lượng không được vượt quá 10.000");
+            soluong.requestFocus();
+            return false;
+        }
+
+        return true;
+    }
     private void openAddbook(int gravity, SQLiteDatabase db){
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -144,6 +207,7 @@ public class Book extends AppCompatActivity {
         Button btn_back = dialog.findViewById(R.id.btn_back);
 
         ngayxb = dialog.findViewById(R.id.ngayxb);
+        ngayxb.setText("2000/01/01");
         ngayxb.setFocusable(false);
         ngayxb.setClickable(true);
         ngayxb.setOnClickListener(new View.OnClickListener() {
@@ -181,7 +245,8 @@ public class Book extends AppCompatActivity {
 
         spnTacgia = dialog.findViewById(R.id.tacgia);
         dbHelper=new DataBase();
-        List<Selected> authorsList = dbHelper.getAllAuthors(db);
+        daosach =new DaoSach(this);
+        List<Selected> authorsList = daosach.getAllAuthors(db);
 
         SelectedAdapter adapter = new SelectedAdapter(this, R.layout.item_selected, authorsList);
         spnTacgia.setAdapter(adapter);
@@ -203,7 +268,8 @@ public class Book extends AppCompatActivity {
 
         spnTheLoai = dialog.findViewById(R.id.theloai);
         dbHelper=new DataBase();
-        List<Selected> categoryList = dbHelper.getAllCategories(db);
+        daosach =new DaoSach(this);
+        List<Selected> categoryList = daosach.getAllCategories(db);
 
         SelectedAdapter adapterCategory = new SelectedAdapter(this, R.layout.item_selected, categoryList);
         spnTheLoai.setAdapter(adapterCategory);
@@ -224,7 +290,7 @@ public class Book extends AppCompatActivity {
 
         spnNhaXB = dialog.findViewById(R.id.nhaxb);
         dbHelper=new DataBase();
-        List<Selected> publisherList = dbHelper.getAllPublishers(db);
+        List<Selected> publisherList = daosach.getAllPublishers(db);
 
         SelectedAdapter adapterPublisher = new SelectedAdapter(this, R.layout.item_selected, publisherList);
         spnNhaXB.setAdapter(adapterPublisher);
@@ -252,19 +318,19 @@ public class Book extends AppCompatActivity {
         btn_addbook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dbHelper = new DataBase();
+                if (validateInputs(masach, tensach, giaban, soluong)) {
+                    dbHelper = new DataBase();
 
-                boolean insertBook= dbHelper.insertBook(db,masach.getText().toString(),tensach.getText().toString(),maTG,maTL,maNXB,ngayxb.getText().toString(),Integer.parseInt(giaban.getText().toString()),Integer.parseInt(soluong.getText().toString()),ImageButton_To_Byte(btnImg));
+                    boolean insertBook = daosach.insertBook(db, masach.getText().toString(), tensach.getText().toString(), maTG, maTL, maNXB, ngayxb.getText().toString(), Integer.parseInt(giaban.getText().toString()), Integer.parseInt(soluong.getText().toString()), ImageButton_To_Byte(btnImg));
 //               = addBook.themVaoCSDL("1","1","1","1","1","1","1");
-            if (insertBook){
-                Toast.makeText(getApplicationContext(), "Thêm sách thành công!", Toast.LENGTH_SHORT).show();
-                Intent myIntent = new Intent(Book.this, Book.class);
-                startActivity(myIntent);
-            }
-            else    {
-                Toast.makeText(Book.this, "Thêm sách không thành công!", Toast.LENGTH_SHORT).show();
-            }
-
+                    if (insertBook) {
+                        Toast.makeText(getApplicationContext(), "Thêm sách thành công!", Toast.LENGTH_SHORT).show();
+                        Intent myIntent = new Intent(Book.this, Book.class);
+                        startActivity(myIntent);
+                    } else {
+                        Toast.makeText(Book.this, "Thêm sách không thành công!", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
 
@@ -292,14 +358,30 @@ public class Book extends AppCompatActivity {
             }
         }
     }
-    public byte[] ImageButton_To_Byte(ImageButton img){
-        BitmapDrawable drawable= (BitmapDrawable) img.getDrawable();
-        Bitmap bmp=drawable.getBitmap();
+    public byte[] ImageButton_To_Byte(ImageButton img) {
+        BitmapDrawable drawable = (BitmapDrawable) img.getDrawable();
+        Bitmap bmp = drawable.getBitmap();
+        bmp = getResizedBitmap(bmp, 500); // Giảm kích thước ảnh xuống 500x500 hoặc tùy chỉnh
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bmp.compress(Bitmap.CompressFormat.PNG,100,stream);
-        byte[] byteArray=stream.toByteArray();
-        return byteArray;
+        bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        return stream.toByteArray();
     }
+
+    public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        float bitmapRatio = (float) width / (float) height;
+        if (bitmapRatio > 1) {
+            width = maxSize;
+            height = (int) (width / bitmapRatio);
+        } else {
+            height = maxSize;
+            width = (int) (height * bitmapRatio);
+        }
+        return Bitmap.createScaledBitmap(image, width, height, true);
+    }
+
     //tableLayout
     private void populateTable(List<BookProperty> books) {
         TableLayout tableLayout = findViewById(R.id.tbly_book);
