@@ -35,15 +35,20 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLogin);
         dbHelper = new Database(this);
 
-        findViewById(R.id.btnLogin).setOnClickListener(v -> login());
+        btnLogin.setOnClickListener(v -> login());
     }
 
     private void login() {
         String username = inputUsername.getText().toString();
         String password = inputPassword.getText().toString();
 
+        if (username.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         if (dbHelper.checkLogin(username, password)) {
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            Intent intent = new Intent(LoginActivity.this, EmployeeDetailsActivity.class);
             intent.putExtra("username", username);
             startActivity(intent);
             finish();

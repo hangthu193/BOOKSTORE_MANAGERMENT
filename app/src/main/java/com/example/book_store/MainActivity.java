@@ -2,6 +2,7 @@ package com.example.book_store;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -61,33 +62,37 @@ public class MainActivity extends AppCompatActivity {
         RadioButton selectedGenderButton = findViewById(selectedGenderId);
         String gender = selectedGenderButton == null ? "" : selectedGenderButton.getText().toString();
 
-        if (isEmpty(name, phoneNumber, address, username, password, gender)) {
-            Toast.makeText(this, "Bạn phải điền đầy đủ thông tin để đăng ký!", Toast.LENGTH_SHORT).show();
-        } else if (dbHelper.isUsernameTaken(username)) {
-            Toast.makeText(this, "Tên đăng nhập đã tồn tại!", Toast.LENGTH_SHORT).show();
-        } else if (!isValidPassword(password)) {
-            Toast.makeText(this, "Mật khẩu phải có ít nhất 8 ký tự, bao gồm cả chữ hoa, chữ thường và số.", Toast.LENGTH_SHORT).show();
-        } else {
-            // Đăng ký thành công
-            dbHelper.insertEmployee(id, name, gender, phoneNumber, address, username, password);
-            Toast.makeText(this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(MainActivity.this, LoginActivity.class));
-            resetFields();
+        // Kiểm tra các trường không được để trống
+        if (TextUtils.isEmpty(name) || TextUtils.isEmpty(phoneNumber) || TextUtils.isEmpty(address)
+                || TextUtils.isEmpty(username) || TextUtils.isEmpty(password) || TextUtils.isEmpty(gender)) {
+            Toast.makeText(this, "Vui lòng điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+            return;
         }
-    }
 
-    private boolean isEmpty(String... strings) {
-        for (String str : strings) {
-            if (str.isEmpty()) {
-                return true;
+        // Kiểm tra tên đăng nhập đã tồn tại hay chưa
+        if (dbHelper.checkUsernameExist(username)) {
+            Toast.makeText(this, "Tên đăng nhập đã tồn tại", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!isValidPassword(password)) {
+            Toast.makeText(this, "Mật khẩu phải có ít nhất 6 ký tự, bao gồm cả chữ hoa, chữ thường và số.", Toast.LENGTH_SHORT).show();
+        } else {
+            // Đăng ký người dùng
+            if (dbHelper.addUser(id, name, gender, phoneNumber, address, username, password)) {
+                Toast.makeText(this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+                // Chuyển sang màn hình đăng nhập
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                resetFields();
+            } else {
+                Toast.makeText(this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
             }
         }
-        return false;
     }
 
     private boolean isValidPassword(String password) {
-        // Kiểm tra mật khẩu có ít nhất 8 ký tự, có chữ hoa, chữ thường và số
-        String passwordPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$";
+        // Kiểm tra mật khẩu có ít nhất 6 ký tự, có chữ hoa, chữ thường và số
+        String passwordPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{6,}$";
         return password.matches(passwordPattern);
     }
 

@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class EmployeeDetailsActivity extends AppCompatActivity {
 
     TextView tvMaNhanVien, tvTenNhanVien, tvGioiTinh, tvSoDienThoai, tvDiaChi, tvTenDangNhap;
-    Button btnSuaThongTinCaNhan;
+    Button btnSuaThongTinCaNhan, btnDangXuat;
     Database dbHelper;
     String username;
 
@@ -34,6 +34,7 @@ public class EmployeeDetailsActivity extends AppCompatActivity {
         tvDiaChi = findViewById(R.id.tvDiaChi);
         tvTenDangNhap = findViewById(R.id.tvTenDangNhap);
         btnSuaThongTinCaNhan = findViewById(R.id.btnSuaThongTinCaNhan);
+        btnDangXuat = findViewById(R.id.btnDangXuat);
 
         username = getIntent().getStringExtra("username");
         loadEmployeeDetails(username);
@@ -53,6 +54,17 @@ public class EmployeeDetailsActivity extends AppCompatActivity {
             intent.putExtra("username", username);
             editEmployeeLauncher.launch(intent); // Sử dụng launcher để khởi động activity
         });
+
+        btnDangXuat.setOnClickListener(v -> {
+            // Hiển thị dialog đăng xuất khi nhấn nút Đăng Xuất
+            showLogoutDialog();
+        });
+    }
+
+    private void showLogoutDialog() {
+        // Tạo và hiển thị dialog đăng xuất
+        LogoutDialogFragment dialog = new LogoutDialogFragment();
+        dialog.show(getSupportFragmentManager(), "logout_dialog");
     }
 
     private void loadEmployeeDetails(String username) {
