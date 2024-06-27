@@ -54,11 +54,12 @@ public class AdapterKho extends BaseAdapter {
         TextView txtgianhap = row.findViewById((R.id.txtgianhap));
 
         Kho kho = mylist.get(position);
-        txtmakho.setText("Ma kho: " + kho.getMaKho());
-        txtmasach.setText("Ma sach: " + kho.getMaSach());
-        txtngaynhap.setText("Ngay nhap: " + kho.getNgayNhap());
-        txtsoluong.setText("So luong nhap: " + kho.getSoLuongNhap());
-        txtgianhap.setText("Gia nhap: " + kho.getGiaNhap());
+        txtmakho.setText("Mã kho: " + kho.getMaKho());
+        txtmasach.setText("Mã sách: " + kho.getMaSach());
+        txtngaynhap.setText("Ngày nhâp: " + kho.getNgayNhap());
+        txtsoluong.setText("Số lượng nhập: " + kho.getSoLuongNhap());
+        txtgianhap.setText("Giá nhập: " + kho.getGiaNhap());
+
         return row;
 
     }

@@ -74,7 +74,7 @@ public class KhoActivity extends AppCompatActivity {
         });
     }
     private String getCurrentDate() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         return sdf.format(new Date());
     }
     protected void onDestroy() {

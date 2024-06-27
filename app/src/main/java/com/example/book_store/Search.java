@@ -16,7 +16,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class Search extends AppCompatActivity {
-    CardView tacgiaCard, khoCard;
+    CardView tacgiaCard, khoCard, doanhthuCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,16 @@ public class Search extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        doanhthuCard = findViewById(R.id.DoanhthuCard);
+        doanhthuCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Search.this, doanhthu.class);
+                startActivity(intent);
+            }
+        });
         checkBatteryLevel();
+
     }
     private void checkBatteryLevel(){
         IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
