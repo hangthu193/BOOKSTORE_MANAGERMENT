@@ -13,7 +13,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.book_store.adapter.AdapterKho;
-import com.example.book_store.dao.DaoKho;
+import com.example.book_store.DAO.DaoKho;
 import com.example.book_store.model.Kho;
 
 import java.util.ArrayList;

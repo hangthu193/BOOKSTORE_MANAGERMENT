@@ -17,7 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class Forgot_password extends AppCompatActivity {
     EditText manhanvien;
-    private DataBase dbHelper;
+    private Database dbHelper;
     private SQLiteDatabase db;
 
     @Override
@@ -33,7 +33,7 @@ public class Forgot_password extends AppCompatActivity {
             return insets;
         });
 
-        dbHelper = new DataBase();
+        dbHelper = new Database(this);
         db = dbHelper.initDatabase(this, "qlSach.db");
         manhanvien = findViewById(R.id.manhanvien);
         btn_updatepass = findViewById(R.id.btn_Forgotpass);

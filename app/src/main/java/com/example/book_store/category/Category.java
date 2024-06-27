@@ -26,15 +26,17 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.book_store.DAO.DaoTheLoai;
-import com.example.book_store.DataBase;
+
+import com.example.book_store.Database;
 import com.example.book_store.MainActivity;
 import com.example.book_store.R;
+import com.example.book_store.Search;
 import com.example.book_store.model.Selected;
 
 import java.util.List;
 
 public class Category extends AppCompatActivity {
-    private DataBase dbHelper;
+    private Database dbHelper;
     private SQLiteDatabase db;
     private DaoTheLoai daoTheLoai;
     @Override
@@ -46,12 +48,12 @@ public class Category extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_category);
 
-        dbHelper = new DataBase();
+        dbHelper = new Database(this);
         db = dbHelper.initDatabase(this, "qlSach.db");
         daoTheLoai= new DaoTheLoai(this);
         btn_quaylai3 = findViewById(R.id.btn_quaylai3);
         btn_quaylai3.setOnClickListener(v -> {
-            Intent myIntent = new Intent(Category.this, MainActivity.class);
+            Intent myIntent = new Intent(Category.this, Search.class);
             startActivity(myIntent);
         });
 
@@ -131,7 +133,7 @@ public class Category extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (validateCategoryInputs(matheloai,tentheloai)) {
-                dbHelper = new DataBase();
+                dbHelper = new Database(Category.this);
                 daoTheLoai= new DaoTheLoai(Category.this);
                 boolean insertCategory= daoTheLoai.insertCategory(db,matheloai.getText().toString(),tentheloai.getText().toString());
 //               = addBook.themVaoCSDL("1","1","1","1","1","1","1");

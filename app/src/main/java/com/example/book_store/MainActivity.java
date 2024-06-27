@@ -1,6 +1,7 @@
 package com.example.book_store;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -80,22 +81,22 @@ public class MainActivity extends AppCompatActivity {
                 openUpdateActivity(selectedTacGia.getMaTG());
             }
         });
-        btn_forgotpass = findViewById(R.id.btn_Forgotpass);
-        btn_forgotpass.setOnClickListener(v -> {
-            Intent myIntent = new Intent(MainActivity.this,Forgot_password.class);
-            startActivity(myIntent);
-
-        });
-        btn_sach = findViewById(R.id.btn_sach);
-        btn_sach.setOnClickListener(v -> {
-            Intent myIntent = new Intent(MainActivity.this, Book.class);
-            startActivity(myIntent);
-        });
-        btn_category = findViewById(R.id.btn_category);
-        btn_category.setOnClickListener(v -> {
-            Intent myIntent = new Intent(MainActivity.this, Category.class);
-            startActivity(myIntent);
-        });
+//        btn_forgotpass = findViewById(R.id.btn_Forgotpass);
+//        btn_forgotpass.setOnClickListener(v -> {
+//            Intent myIntent = new Intent(MainActivity.this,Forgot_password.class);
+//            startActivity(myIntent);
+//
+//        });
+//        btn_sach = findViewById(R.id.btn_sach);
+//        btn_sach.setOnClickListener(v -> {
+//            Intent myIntent = new Intent(MainActivity.this, Book.class);
+//            startActivity(myIntent);
+//        });
+//        btn_category = findViewById(R.id.btn_category);
+//        btn_category.setOnClickListener(v -> {
+//            Intent myIntent = new Intent(MainActivity.this, Category.class);
+//            startActivity(myIntent);
+//        });
     }
 
     private void loadData() {

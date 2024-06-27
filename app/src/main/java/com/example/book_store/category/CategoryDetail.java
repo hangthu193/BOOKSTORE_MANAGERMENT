@@ -24,7 +24,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.book_store.DAO.DaoTheLoai;
-import com.example.book_store.DataBase;
+
+import com.example.book_store.Database;
 import com.example.book_store.MainActivity;
 import com.example.book_store.R;
 import com.example.book_store.book.Book;
@@ -33,7 +34,7 @@ import com.example.book_store.model.BookDetailProperty;
 import com.example.book_store.model.CategoryProperty;
 
 public class CategoryDetail extends AppCompatActivity {
-    private DataBase dbHelper;
+    private Database dbHelper;
     private SQLiteDatabase db;
     private  DaoTheLoai daoTheLoai;
     Button btn_update;
@@ -55,7 +56,7 @@ public class CategoryDetail extends AppCompatActivity {
 
         String categoryId = getIntent().getStringExtra("CATEGORY_ID");
 
-        dbHelper = new DataBase();
+        dbHelper = new Database(this);
         db = dbHelper.initDatabase(this, "qlSach.db");
         daoTheLoai= new DaoTheLoai(this);
         CategoryProperty category = daoTheLoai.getCategoryDetail(db, categoryId);
@@ -153,7 +154,7 @@ public class CategoryDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (validateCategoryInputs(tenTL)) {
-                dbHelper = new DataBase();
+                dbHelper = new Database(CategoryDetail.this);
                 boolean updateCategory = daoTheLoai.updateCategory(db, maTL.getText().toString(), tenTL.getText().toString());
                 if (updateCategory) {
 

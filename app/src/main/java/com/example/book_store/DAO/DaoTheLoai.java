@@ -6,12 +6,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 
-import com.example.book_store.DataBase;
+
+import com.example.book_store.Database;
 import com.example.book_store.model.CategoryProperty;
 
 public class DaoTheLoai {
     private SQLiteDatabase database;
-    private DataBase dbHelper;
+    private Database dbHelper;
     private Context mContext;
 
     public DaoTheLoai(Context mContext) {

@@ -15,8 +15,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.book_store.book.Book;
+import com.example.book_store.category.Category;
+
 public class Search extends AppCompatActivity {
-    CardView tacgiaCard, khoCard, doanhthuCard;
+    CardView tacgiaCard, khoCard, doanhthuCard,btn_sach,btn_category;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,22 @@ public class Search extends AppCompatActivity {
                 Intent intent = new Intent(Search.this, doanhthu.class);
                 startActivity(intent);
             }
+        });
+        //        btn_forgotpass = findViewById(R.id.btn_Forgotpass);
+//        btn_forgotpass.setOnClickListener(v -> {
+//            Intent myIntent = new Intent(MainActivity.this,Forgot_password.class);
+//            startActivity(myIntent);
+//
+//        });
+        btn_sach = findViewById(R.id.clothingCard);
+        btn_sach.setOnClickListener(v -> {
+            Intent myIntent = new Intent(Search.this, Book.class);
+            startActivity(myIntent);
+        });
+        btn_category = findViewById(R.id.TheLoaiCard);
+        btn_category.setOnClickListener(v -> {
+            Intent myIntent = new Intent(Search.this, Category.class);
+            startActivity(myIntent);
         });
         checkBatteryLevel();
 

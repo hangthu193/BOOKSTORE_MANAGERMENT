@@ -19,7 +19,7 @@ public class newpass extends AppCompatActivity {
 
     EditText newpass, repnewpass;
     Button btn_updatepass;
-    private DataBase dbHelper;
+    private Database dbHelper;
     private SQLiteDatabase db;
 
     @Override
@@ -34,7 +34,7 @@ public class newpass extends AppCompatActivity {
             return insets;
         });
 
-        dbHelper = new DataBase();
+        dbHelper = new Database(this);
         db = dbHelper.initDatabase(this, "qlSach.db");
 
         btn_quaylai1 = findViewById(R.id.btn_quaylai1);

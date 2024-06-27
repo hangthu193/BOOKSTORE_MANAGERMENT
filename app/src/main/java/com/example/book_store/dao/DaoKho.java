@@ -1,4 +1,4 @@
-package com.example.book_store.dao;
+package com.example.book_store.DAO;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -19,9 +19,9 @@ public class DaoKho {
     private Database dbHelper;
     private Context mContext;
 
-    public DaoKho(Context context) {
-        dbHelper = new Database(context);
-        this.mContext = context;
+    public DaoKho(Context mContext) {
+        dbHelper = new Database(mContext);
+        this.mContext = mContext;
     }
 
     public void open() {

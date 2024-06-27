@@ -37,9 +37,11 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.book_store.DAO.DaoSach;
-import com.example.book_store.DataBase;
+
+import com.example.book_store.Database;
 import com.example.book_store.MainActivity;
 import com.example.book_store.R;
+import com.example.book_store.Search;
 import com.example.book_store.adapter.SelectedAdapter;
 import com.example.book_store.model.BookProperty;
 import com.example.book_store.model.Selected;
@@ -51,7 +53,7 @@ import java.util.Calendar;
 import java.util.List;
 
 public class Book extends AppCompatActivity {
-    private DataBase dbHelper;
+    private Database dbHelper;
     private SQLiteDatabase db;
     private DaoSach daosach;
     private Spinner spnTacgia;
@@ -73,7 +75,7 @@ public class Book extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_book);
-        dbHelper = new DataBase();
+        dbHelper = new Database(this);
         db = dbHelper.initDatabase(this, "qlSach.db");
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -88,7 +90,7 @@ public class Book extends AppCompatActivity {
 
         btn_quaylai2 = findViewById(R.id.btn_quaylai2);
         btn_quaylai2.setOnClickListener(v -> {
-            Intent myIntent = new Intent(Book.this, MainActivity.class);
+            Intent myIntent = new Intent(Book.this, Search.class);
             startActivity(myIntent);
         });
 
@@ -245,7 +247,7 @@ public class Book extends AppCompatActivity {
         });
 
         spnTacgia = dialog.findViewById(R.id.tacgia);
-        dbHelper=new DataBase();
+        dbHelper=new Database(this);
         daosach =new DaoSach(this);
         List<Selected> authorsList = daosach.getAllAuthors(db);
 
@@ -268,7 +270,7 @@ public class Book extends AppCompatActivity {
 
 
         spnTheLoai = dialog.findViewById(R.id.theloai);
-        dbHelper=new DataBase();
+        dbHelper=new Database(this);
         daosach =new DaoSach(this);
         List<Selected> categoryList = daosach.getAllCategories(db);
 
@@ -290,7 +292,7 @@ public class Book extends AppCompatActivity {
 
 
         spnNhaXB = dialog.findViewById(R.id.nhaxb);
-        dbHelper=new DataBase();
+        dbHelper=new Database(this);
         List<Selected> publisherList = daosach.getAllPublishers(db);
 
         SelectedAdapter adapterPublisher = new SelectedAdapter(this, R.layout.item_selected, publisherList);
@@ -320,7 +322,7 @@ public class Book extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (validateInputs(masach, tensach, giaban, soluong)) {
-                    dbHelper = new DataBase();
+                    dbHelper = new Database(Book.this);
 
                     boolean insertBook = daosach.insertBook(db, masach.getText().toString(), tensach.getText().toString(), maTG, maTL, maNXB, ngayxb.getText().toString(), Integer.parseInt(giaban.getText().toString()), Integer.parseInt(soluong.getText().toString()), ImageButton_To_Byte(btnImg));
 //               = addBook.themVaoCSDL("1","1","1","1","1","1","1");

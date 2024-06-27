@@ -7,8 +7,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.book_store.dao.DaoKho;
-import com.example.book_store.dao.DaoSach;
+import com.example.book_store.DAO.DaoKho;
+import com.example.book_store.DAO.DaoSach;
 import com.example.book_store.model.Kho;
 import com.example.book_store.model.Sach;
 
