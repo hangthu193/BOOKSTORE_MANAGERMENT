@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -158,8 +159,8 @@ public class Category extends AppCompatActivity {
         // Add table header
         TableRow headerRow = new TableRow(this);
         headerRow.addView(createTextView("STT",true));
-        headerRow.addView(createTextView("Mã thể loại", true));
-        headerRow.addView(createTextView("Tên thể loại", true));
+        headerRow.addView(createTextView("Mã TL", true));
+        headerRow.addView(createTextView("Tên TL", true));
         headerRow.addView(createTextView("Thao tác", true));
         // Thêm tiêu đề cho các cột khác nếu cần
         tableLayout.addView(headerRow);
@@ -198,9 +199,20 @@ public class Category extends AppCompatActivity {
         textView.setText(text);
         textView.setPadding(8, 16, 8, 16);
         textView.setGravity(Gravity.CENTER);
+        textView.setEllipsize(TextUtils.TruncateAt.END);
+        textView.setSingleLine(true);
+
+
+        int maxWidth = isHeader ? 200 : 300;
+        textView.setMaxWidth(maxWidth);
+        textView.setLayoutParams(new TableRow.LayoutParams(
+                TableRow.LayoutParams.WRAP_CONTENT,
+                TableRow.LayoutParams.WRAP_CONTENT
+        ));
         if (isHeader) {
             textView.setTypeface(null, Typeface.BOLD);
-            textView.setBackgroundColor(Color.parseColor("#9BB7FF"));
+            textView.setBackgroundColor(Color.parseColor("#F6EBB0"));
+            textView.setTextSize(18);
             textView.setPadding(8, 24, 8, 24);
         }
         return textView;

@@ -11,9 +11,11 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -207,7 +209,7 @@ public class Book extends AppCompatActivity {
         EditText giaban = dialog.findViewById(R.id.giaban);
         EditText soluong = dialog.findViewById(R.id.soluong);
         Button btn_addbook = dialog.findViewById(R.id.btn_addbook);
-        Button btn_back = dialog.findViewById(R.id.btn_back);
+        ImageButton btn_back = dialog.findViewById(R.id.btn_back);
 
         ngayxb = dialog.findViewById(R.id.ngayxb);
         ngayxb.setText("2000/01/01");
@@ -433,10 +435,21 @@ public class Book extends AppCompatActivity {
             textView.setText(text);
             textView.setPadding(8, 16, 8, 16);
             textView.setGravity(Gravity.CENTER);
+        textView.setEllipsize(TextUtils.TruncateAt.END);
+        textView.setSingleLine(true);
+
+        // Đặt độ rộng tối đa cho TextView, bạn có thể điều chỉnh giá trị này
+        int maxWidth = isHeader ? 200 : 300; // Ví dụ: 200dp cho tiêu đề, 300dp cho nội dung
+        textView.setMaxWidth(maxWidth);
+        textView.setLayoutParams(new TableRow.LayoutParams(
+                TableRow.LayoutParams.WRAP_CONTENT,
+                TableRow.LayoutParams.WRAP_CONTENT
+        ));
             if (isHeader) {
                 textView.setTypeface(null, Typeface.BOLD);
-                textView.setBackgroundColor(Color.parseColor("#9BB7FF"));
+                textView.setBackgroundColor(Color.parseColor("#F6EBB0"));
                 textView.setPadding(8, 24, 8, 24);
+                textView.setTextSize(18);
             }
             return textView;
     }
