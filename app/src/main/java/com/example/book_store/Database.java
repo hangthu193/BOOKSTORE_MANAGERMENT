@@ -142,24 +142,26 @@ public class Database extends SQLiteOpenHelper {
         return String.format(Locale.getDefault(), "NXB%04d", id + 1);
     }
 
-    // Phương thức để kiểm tra xem một tên nhà xuất bản đã tồn tại trong bảng nhà xuất bản chưa
-  //  public boolean checkPublisherExist(String name) {
-   //     SQLiteDatabase db = this.getReadableDatabase();
-     //   Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_PUBLISHER + " WHERE " + COLUMN_PUBLISHER_NAME + " = ?", new String[]{name});
-      //  int count = cursor.getCount();
-     //   cursor.close();
-    //    return count > 0;
- //   }
-
-    // Phương thức để thêm một nhà xuất bản mới vào cơ sở dữ liệu
     public boolean addPublisher(String id, String name, String address) {
+        if (checkPublisherExist(name)) {
+            return false; // Trả về false nếu tên nhà xuất bản đã tồn tại
+        }
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COLUMN_PUBLISHER_ID, id);
         contentValues.put(COLUMN_PUBLISHER_NAME, name);
         contentValues.put(COLUMN_PUBLISHER_ADDRESS, address);
         long result = db.insert(TABLE_PUBLISHER, null, contentValues);
+        db.close(); // Đóng kết nối sau khi thực hiện xong
         return result != -1;
+    }
+
+    public boolean checkPublisherExist(String name) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_PUBLISHER + " WHERE " + COLUMN_PUBLISHER_NAME + " = ?", new String[]{name});
+        int count = cursor.getCount();
+        cursor.close();
+        return count > 0;
     }
 
     // Phương thức để cập nhật thông tin của một nhà xuất bản trong bảng nhà xuất bản
@@ -169,26 +171,7 @@ public class Database extends SQLiteOpenHelper {
         contentValues.put(COLUMN_PUBLISHER_NAME, newName);
         contentValues.put(COLUMN_PUBLISHER_ADDRESS, newAddress);
         db.update(TABLE_PUBLISHER, contentValues, COLUMN_PUBLISHER_ID + " = ?", new String[]{id});
+        db.close();
     }
 
-    // Phương thức để lấy chi tiết của một nhà xuất bản dựa trên mã nhà xuất bản
-    public Cursor getPublisherDetails(String publisherId) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        String[] projection = {
-                COLUMN_PUBLISHER_NAME,
-                COLUMN_PUBLISHER_ADDRESS
-        };
-        String selection = COLUMN_PUBLISHER_ID + "=?";
-        String[] selectionArgs = { publisherId };
-
-        return db.query(
-                TABLE_PUBLISHER,         // Tên bảng
-                projection,              // Các cột cần lấy dữ liệu
-                selection,               // Điều kiện WHERE
-                selectionArgs,           // Giá trị tham số cho điều kiện WHERE
-                null,                    // GROUP BY
-                null,                    // HAVING
-                null                     // ORDER BY
-        );
-    }
 }
