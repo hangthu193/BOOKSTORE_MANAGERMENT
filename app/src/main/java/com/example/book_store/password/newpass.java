@@ -1,4 +1,4 @@
-package com.example.book_store;
+package com.example.book_store.password;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -14,6 +14,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.book_store.Database;
+import com.example.book_store.MainActivity;
+import com.example.book_store.R;
 
 public class newpass extends AppCompatActivity {
 

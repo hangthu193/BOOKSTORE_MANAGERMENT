@@ -18,12 +18,7 @@
         <activity
             android:name=".category.Category"
             android:exported="false" />
-        <activity
-            android:name=".book.BookUpdate"
-            android:exported="false" />
-        <activity
-            android:name=".Addbook"
-            android:exported="false" />
+      
         <activity
             android:name=".book.Bookdetail"
             android:exported="false" />
@@ -31,10 +26,10 @@
             android:name=".book.Book"
             android:exported="false" />
         <activity
-            android:name=".newpass"
+            android:name=".password.newpass"
             android:exported="false" />
         <activity
-            android:name=".Forgot_password"
+            android:name=".password.Forgot_password"
             android:exported="false" />
       
         <activity
