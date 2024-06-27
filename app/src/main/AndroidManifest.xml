@@ -18,7 +18,7 @@
         <activity
             android:name=".category.Category"
             android:exported="false" />
-      
+
         <activity
             android:name=".book.Bookdetail"
             android:exported="false" />
@@ -31,7 +31,7 @@
         <activity
             android:name=".password.Forgot_password"
             android:exported="false" />
-      
+
         <activity
             android:name=".doanhthu"
             android:exported="false" />
@@ -54,8 +54,33 @@
             android:name=".updateAtivity"
             android:exported="false" />
         <activity
+            android:name=".Sua_nxbActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Them_nxbActivity"
+            android:exported="false" />
+        <activity
+            android:name=".QuanLy_NxbActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".EditEmployeeDetailsDialog"
+            android:exported="false" />
+        <activity
+            android:name=".EmployeeDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".Search"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

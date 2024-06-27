@@ -1,3 +1,34 @@
 <resources>
     <string name="app_name">Book_Store</string>
+    <string name="sign_up">Đăng ký</string>
+    <string name="id">Mã nhân viên: </string>
+    <string name="name">Tên nhân viên</string>
+    <string name="gender">Giới tính</string>
+    <string name="male">Nam</string>
+    <string name="female">Nữ</string>
+    <string name="phone_number">Số điện thoại</string>
+    <string name="address">Địa chỉ</string>
+    <string name="username">Tên đăng nhập</string>
+    <string name="password">Mật khẩu</string>
+    <string name="signup_btn">Đăng ký</string>
+    <string name="have_an_account">Bạn đã có tài khoản?</string>
+    <string name="login_click">Đăng nhập</string>
+
+    <string name="login">Đăng nhập</string>
+    <string name="forgot_password">Quên mật khẩu?</string>
+    <string name="login_btn">Đăng nhập</string>
+
+    <string name="two_image">Ảnh 2</string>
+    <string name="nine_image">Ảnh 9</string>
+    <string name="three_image">Ảnh 3</string>
+    <string name="eight_image">Ảnh 8</string>
+
+    <string name="btn_edit_profile">Chỉnh sửa</string>
+    <string name="btn_logout">Đăng Xuất</string>
+
+
+    <string name="btn_cancel">Hủy</string>
+    <string name="btn_confirm">Xác nhận</string>
+    <string name="btn_add">Thêm</string>
+
 </resources>
