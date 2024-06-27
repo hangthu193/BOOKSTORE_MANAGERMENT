@@ -221,5 +221,72 @@ public class Database extends SQLiteOpenHelper {
         return db.query(tableName, null, columnUsername + " = ?", new String[]{username}, null, null, null);
     }
 
+    // Phương thức để thêm một người dùng mới (nhân viên) vào cơ sở dữ liệu
+    public boolean addUser(String id, String name, String gender, String phone, String address, String username, String password) {
+        if (checkUsernameExist(username)) {
+            return false; // Trả về false nếu tên nhà xuất bản đã tồn tại
+        }
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            String tableName = "NhanVien";
+            String columnID = "MaNhanVien";
+            String columnName = "TenNhanVien";
+            String columnGender = "GioiTinh";
+            String columnPhone = "SĐT";
+            String columnAddress = "DiaChi";
+            String columnUsername = "TenDangNhap";
+            String columnPassword = "MatKhau";
 
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(columnID, id);
+            contentValues.put(columnName, name);
+            contentValues.put(columnGender, gender);
+            contentValues.put(columnPhone, phone);
+            contentValues.put(columnAddress, address);
+            contentValues.put(columnUsername , username);
+            contentValues.put(columnPassword , password);
+            long result = db.insert(tableName, null, contentValues);
+            db.close();
+            return result != -1;
+        }
+        catch (Exception e){
+            return false;
+        }
+
+    }
+
+    // Phương thức để kiểm tra xem một tên đăng nhập đã tồn tại trong bảng nhân viên chưa
+    public boolean checkUsernameExist(String username) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String tableName = "NhanVien";
+        String columnUsername = "TenDangNhap";
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + tableName + " WHERE " + columnUsername + " = ?", new String[]{username});
+        int count = cursor.getCount();
+        cursor.close();
+        return count > 0;
+    }
+
+    // Phương thức để tạo mã nhân viên mới
+    public String generateID() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String tableName = "NhanVien";
+        Cursor cursor = db.rawQuery("PRAGMA table_info(" + tableName + ")", null);
+        int id = 0;
+        if (cursor.moveToFirst()) {
+            id = cursor.getInt(0);
+        }
+        cursor.close();
+        return String.format(Locale.getDefault(), "NV%04d", id + 1);
+    }
+    public void updateEmployeeDetails(String id, String newName, String newGender, String newPhone, String newAddress, String newUsername) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("TenNhanVien", newName);
+        contentValues.put("GioiTinh", newGender);
+        contentValues.put("SĐT", newPhone);
+        contentValues.put("DiaChi", newAddress);
+        contentValues.put("TenDangNhap", newUsername);
+        db.update("NhanVien", contentValues, "MaNhanVien" + " = ?", new String[]{id});
+    }
 }

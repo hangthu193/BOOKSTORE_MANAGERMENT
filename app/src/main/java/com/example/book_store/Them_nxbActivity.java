@@ -54,9 +54,12 @@ public class Them_nxbActivity extends AppCompatActivity {
 
         if (success) {
             Toast.makeText(this, "Thêm nhà xuất bản thành công", Toast.LENGTH_SHORT).show();
-            finish();
+            Intent intent = new Intent(this, QuanLy_NxbActivity.class);
+            startActivity(intent);
+            finish(); // Đóng activity hiện tại sau khi chuyển sang activity mới
         } else {
             Toast.makeText(this, "Thêm nhà xuất bản thất bại", Toast.LENGTH_SHORT).show();
         }
+
     }
 }

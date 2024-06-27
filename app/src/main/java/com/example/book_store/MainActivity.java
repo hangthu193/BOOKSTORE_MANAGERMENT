@@ -12,12 +12,10 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.book_store.Adapter.MyAdapter;
 import com.example.book_store.DAO.DaoTacGia;
 
 import java.util.ArrayList;
-
-import com.example.book_store.book.Book;
-import com.example.book_store.category.Category;
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_ADD = 1;

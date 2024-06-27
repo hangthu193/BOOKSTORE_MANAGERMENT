@@ -1,4 +1,4 @@
-package com.example.book_store;
+package com.example.book_store.Adapter;
 
 import static android.content.Context.MODE_PRIVATE;
 import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
@@ -20,6 +20,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.book_store.DAO.DaoTacGia;
+import com.example.book_store.R;
+import com.example.book_store.TacGia;
+import com.example.book_store.updateAtivity;
 
 import java.io.File;
 import java.io.FileOutputStream;

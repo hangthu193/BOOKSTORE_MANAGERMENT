@@ -32,29 +32,29 @@ public class EditEmployeeDetailsDialog extends AppCompatActivity {
         btnHuy = findViewById(R.id.btnHuy);
 
         username = getIntent().getStringExtra("username");
-//        loadEmployeeDetails(username);
+        loadEmployeeDetails(username);
 
         btnXacNhan.setOnClickListener(v -> updateEmployeeDetails());
 
         btnHuy.setOnClickListener(v -> finish()); // Sử dụng lambda để đóng Dialog nếu người dùng hủy bỏ
     } 
 
-//    private void loadEmployeeDetails(String username) {
-//        Cursor cursor = dbHelper.getEmployeeDetails(username);
-//        if (cursor.moveToFirst()) {
-//            employeeId = cursor.getString(cursor.getColumnIndexOrThrow(Database.COLUMN_EMPLOYEE_ID));
-//            etTenNhanVienMoi.setText(cursor.getString(cursor.getColumnIndexOrThrow(Database.COLUMN_EMPLOYEE_NAME)));
-//            etGioiTinhMoi.setText(cursor.getString(cursor.getColumnIndexOrThrow(Database.COLUMN_EMPLOYEE_GENDER)));
-//            etSoDienThoaiMoi.setText(cursor.getString(cursor.getColumnIndexOrThrow(Database.COLUMN_EMPLOYEE_PHONE)));
-//            etDiaChiMoi.setText(cursor.getString(cursor.getColumnIndexOrThrow(Database.COLUMN_EMPLOYEE_ADDRESS)));
-//            etTenDangNhapMoi.setText(cursor.getString(cursor.getColumnIndexOrThrow(Database.COLUMN_EMPLOYEE_USERNAME)));
-//
-//            // Disable editing of employee ID
-//            etMaNhanVien.setEnabled(false);
-//            etMaNhanVien.setText(employeeId);
-//        }
-//        cursor.close();
-//    }
+    private void loadEmployeeDetails(String username) {
+        Cursor cursor = dbHelper.getEmployeeDetails(username);
+        if (cursor.moveToFirst()) {
+            employeeId = cursor.getString(0);
+            etTenNhanVienMoi.setText(cursor.getString(1));
+            etGioiTinhMoi.setText(cursor.getString(2));
+            etSoDienThoaiMoi.setText(cursor.getString(3));
+            etDiaChiMoi.setText(cursor.getString(4));
+            etTenDangNhapMoi.setText(cursor.getString(5));
+
+            // Disable editing of employee ID
+            etMaNhanVien.setEnabled(false);
+            etMaNhanVien.setText(employeeId);
+        }
+        cursor.close();
+    }
 
     private void updateEmployeeDetails() {
         String newTenNhanVien = etTenNhanVienMoi.getText().toString().trim();
@@ -63,7 +63,7 @@ public class EditEmployeeDetailsDialog extends AppCompatActivity {
         String newDiaChi = etDiaChiMoi.getText().toString().trim();
         String newTenDangNhap = etTenDangNhapMoi.getText().toString().trim();
 
-//        dbHelper.updateEmployeeDetails(employeeId, newTenNhanVien, newGioiTinh, newSoDienThoai, newDiaChi, newTenDangNhap);
+        dbHelper.updateEmployeeDetails(employeeId, newTenNhanVien, newGioiTinh, newSoDienThoai, newDiaChi, newTenDangNhap);
 
         // Trả kết quả về cho EmployeeDetailsActivity
         setResult(RESULT_OK);

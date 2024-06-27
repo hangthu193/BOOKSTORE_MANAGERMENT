@@ -12,22 +12,22 @@ import java.util.List;
 
 public class NhaXuatBanAdapter extends BaseAdapter {
 
-    private Context Context;
-    private List<NhaXuatBan> ListNXB;
+    private Context mContext;
+    private List<NhaXuatBan> mListNXB;
 
     public NhaXuatBanAdapter(Context context, List<NhaXuatBan> listNXB) {
-        Context = context;
-        ListNXB = listNXB;
+        mContext = context;
+        mListNXB = listNXB;
     }
 
     @Override
     public int getCount() {
-        return ListNXB.size();
+        return mListNXB.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return ListNXB.get(position);
+        return mListNXB.get(position);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class NhaXuatBanAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
         if (view == null) {
-            LayoutInflater inflater = (LayoutInflater) Context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.item_nxb, null);
         }
 
@@ -47,11 +47,18 @@ public class NhaXuatBanAdapter extends BaseAdapter {
         TextView tvTenNXB = view.findViewById(R.id.tvTenNXB);
         TextView tvDiaChi = view.findViewById(R.id.tvDiaChi);
 
-        NhaXuatBan nxb = ListNXB.get(position);
+        NhaXuatBan nxb = mListNXB.get(position);
         tvMaNXB.setText(nxb.getMaNXB());
         tvTenNXB.setText(nxb.getTenNXB());
         tvDiaChi.setText(nxb.getDiaChi());
 
         return view;
+    }
+
+    // Phương thức để cập nhật dữ liệu của adapter
+    public void updateData(List<NhaXuatBan> newList) {
+        mListNXB.clear();
+        mListNXB.addAll(newList);
+        notifyDataSetChanged();
     }
 }
