@@ -1,4 +1,4 @@
-package com.example.book_store.Model;
+package com.example.book_store.model;
 
 public class NhaXuatBan {
     private String maNXB;

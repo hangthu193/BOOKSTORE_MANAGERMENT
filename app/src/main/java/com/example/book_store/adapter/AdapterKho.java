@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.example.book_store.R;
 import com.example.book_store.TacGia;
 import com.example.book_store.DAO.DaoKho;
-import com.example.book_store.dao.DaoTacGia;
+import com.example.book_store.DAO.DaoTacGia;
 import com.example.book_store.model.Kho;
 
 import java.util.ArrayList;

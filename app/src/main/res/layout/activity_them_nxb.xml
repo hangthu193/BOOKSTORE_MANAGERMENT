@@ -130,7 +130,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/Gray"
             android:text="@string/btn_cancel"
-            android:textColor="@color/White"
+            android:textColor="@color/white"
             android:textSize="18sp" />
 
         <Button
@@ -141,7 +141,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/Purple"
             android:text="@string/btn_confirm"
-            android:textColor="@color/White"
+            android:textColor="@color/white"
             android:textSize="18sp" />
 
     </LinearLayout>

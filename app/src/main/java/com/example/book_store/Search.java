@@ -19,7 +19,7 @@ import com.example.book_store.book.Book;
 import com.example.book_store.category.Category;
 
 public class Search extends AppCompatActivity {
-    CardView tacgiaCard, khoCard, doanhthuCard,btn_sach,btn_category;
+    CardView tacgiaCard, khoCard, doanhthuCard,btn_sach,btn_category,btn_nxb,btn_nguoidung;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +64,16 @@ public class Search extends AppCompatActivity {
         btn_category = findViewById(R.id.TheLoaiCard);
         btn_category.setOnClickListener(v -> {
             Intent myIntent = new Intent(Search.this, Category.class);
+            startActivity(myIntent);
+        });
+        btn_nxb=findViewById(R.id.NXbCARD);
+        btn_nxb.setOnClickListener(v -> {
+            Intent myIntent = new Intent(Search.this, QuanLy_NxbActivity.class);
+            startActivity(myIntent);
+        });
+        btn_nguoidung=findViewById(R.id.userCard);
+        btn_nguoidung.setOnClickListener(v -> {
+            Intent myIntent = new Intent(Search.this, EmployeeDetailsActivity.class);
             startActivity(myIntent);
         });
         checkBatteryLevel();

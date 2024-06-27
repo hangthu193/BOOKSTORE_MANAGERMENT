@@ -41,7 +41,7 @@
                 android:layout_height="50dp"
                 android:gravity="center_vertical"
                 android:text="@string/id"
-                android:textColor="@color/Gray"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -162,7 +162,7 @@
             android:layout_marginEnd="20dp"
             android:background="@drawable/button_bg"
             android:text="@string/btn_edit_profile"
-            android:textColor="@color/White"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:contentDescription="@string/btn_edit_profile" />
 
@@ -172,7 +172,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/button_bg"
             android:text="@string/btn_logout"
-            android:textColor="@color/White"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:contentDescription="@string/btn_logout" />
 

@@ -21,6 +21,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class Database extends SQLiteOpenHelper {
     private static final String DB_NAME = "qlSach.db";
@@ -105,6 +106,21 @@ public class Database extends SQLiteOpenHelper {
             return false;
         }
     }
+    public boolean checkLogin(String username, String password) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String tableName = "NhanVien";
+        String usernameColumn = "TenDangNhap";
+        String passwordColumn = "MatKhau";
+
+        String[] columns = {usernameColumn};
+        String selection = usernameColumn + " = ? AND " + passwordColumn + " = ?";
+        String[] selectionArgs = {username, password};
+
+        Cursor cursor = db.query(tableName, columns, selection, selectionArgs, null, null, null);
+        boolean exists = cursor.getCount() > 0;
+        cursor.close();
+        return exists;
+    }
 
     public boolean updatePassword(SQLiteDatabase db, String manhanvien, String newPassword) {
         try {
@@ -143,5 +159,67 @@ public class Database extends SQLiteOpenHelper {
         }
         return categories;
     }
+    public String generatePublisherID() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String tableName = "NXB"; // Tên bảng
+        Cursor cursor = db.rawQuery("PRAGMA table_info(" + tableName + ")", null);
+        int id = 0;
+        if (cursor.moveToFirst()) {
+            id = cursor.getInt(0);
+        }
+        cursor.close();
+        return String.format(Locale.getDefault(), "NXB%04d", id + 1);
+    }
+
+    public boolean addPublisher(String id, String name, String address) {
+        if (checkPublisherExist(name)) {
+            return false; // Trả về false nếu tên nhà xuất bản đã tồn tại
+        }
+        SQLiteDatabase db = this.getWritableDatabase();
+        String tableName = "NXB";
+        String columnID = "MaNXB";
+        String columnName = "TenNXB";
+        String columnAddress = "DiaChi";
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(columnID, id);
+        contentValues.put(columnName, name);
+        contentValues.put(columnAddress, address);
+        long result = db.insert(tableName, null, contentValues);
+        db.close();
+        return result != -1;
+    }
+
+    public boolean checkPublisherExist(String name) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String tableName = "NXB";
+        String columnName = "TenNXB";
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + tableName + " WHERE " + columnName + " = ?", new String[]{name});
+        int count = cursor.getCount();
+        cursor.close();
+        return count > 0;
+    }
+    public void updatePublisherDetails(String id, String newName, String newAddress) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String tableName = "NXB";
+        String columnID = "MaNXB";
+        String columnName = "TenNXB";
+        String columnAddress = "DiaChi";
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(columnName, newName);
+        contentValues.put(columnAddress, newAddress);
+        db.update(tableName, contentValues, columnID + " = ?", new String[]{id});
+        db.close();
+    }
+    public Cursor getEmployeeDetails(String username) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String tableName = "NhanVien"; // Tên bảng
+        String columnUsername = "TenDangNhap"; // Tên cột tên đăng nhập
+
+        return db.query(tableName, null, columnUsername + " = ?", new String[]{username}, null, null, null);
+    }
+
 
 }

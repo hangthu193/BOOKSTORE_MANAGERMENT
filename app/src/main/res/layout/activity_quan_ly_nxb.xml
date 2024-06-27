@@ -35,7 +35,7 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="30dp"
         android:src="@drawable/icon_add"
-        app:tint="@color/White"
+        app:tint="@color/white"
         android:backgroundTint="@color/Purple"
         android:contentDescription="@string/btn_add" />
 </RelativeLayout>

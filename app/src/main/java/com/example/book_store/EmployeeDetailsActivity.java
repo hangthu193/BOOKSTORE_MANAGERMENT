@@ -70,12 +70,12 @@ public class EmployeeDetailsActivity extends AppCompatActivity {
     private void loadEmployeeDetails(String username) {
         Cursor cursor = dbHelper.getEmployeeDetails(username);
         if (cursor.moveToFirst()) {
-            tvMaNhanVien.setText(cursor.getString(cursor.getColumnIndexOrThrow(Database.COLUMN_EMPLOYEE_ID)));
-            tvTenNhanVien.setText(cursor.getString(cursor.getColumnIndexOrThrow(Database.COLUMN_EMPLOYEE_NAME)));
-            tvGioiTinh.setText(cursor.getString(cursor.getColumnIndexOrThrow(Database.COLUMN_EMPLOYEE_GENDER)));
-            tvSoDienThoai.setText(cursor.getString(cursor.getColumnIndexOrThrow(Database.COLUMN_EMPLOYEE_PHONE)));
-            tvDiaChi.setText(cursor.getString(cursor.getColumnIndexOrThrow(Database.COLUMN_EMPLOYEE_ADDRESS)));
-            tvTenDangNhap.setText(cursor.getString(cursor.getColumnIndexOrThrow(Database.COLUMN_EMPLOYEE_USERNAME)));
+            tvMaNhanVien.setText(cursor.getString(0));
+            tvTenNhanVien.setText(cursor.getString(1));
+            tvGioiTinh.setText(cursor.getString(2));
+            tvSoDienThoai.setText(cursor.getString(3));
+            tvDiaChi.setText(cursor.getString(4));
+            tvTenDangNhap.setText(cursor.getString(5));
         }
         cursor.close();
     }

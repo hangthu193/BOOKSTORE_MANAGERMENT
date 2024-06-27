@@ -159,7 +159,7 @@
             android:layout_weight="2"
             android:text="@string/btn_cancel"
             android:textSize="18sp"
-            android:textColor="@color/White"
+            android:textColor="@color/white"
             android:backgroundTint="@color/Gray"
             android:layout_marginEnd="10dp"
             />
@@ -172,7 +172,7 @@
             android:backgroundTint="@color/Purple"
             android:textSize="18sp"
             android:text="@string/btn_confirm"
-            android:textColor="@color/White"
+            android:textColor="@color/white"
             android:layout_marginStart="10dp"
             />
 
