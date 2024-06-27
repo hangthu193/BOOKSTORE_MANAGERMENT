@@ -36,9 +36,31 @@
         <activity
             android:name=".Forgot_password"
             android:exported="false" />
+      
+        <activity
+            android:name=".doanhthu"
+            android:exported="false" />
+        <activity
+            android:name=".QuanlyKho"
+            android:exported="false" />
+        <activity
+            android:name=".KhoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".updatePass"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" >
+            android:exported="false" />
+        <activity
+            android:name=".AddActivity"
+            android:exported="false" />
+        <activity
+            android:name=".updateAtivity"
+            android:exported="false" />
+        <activity
+            android:name=".Search"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

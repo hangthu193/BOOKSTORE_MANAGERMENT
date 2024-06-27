@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".KhoActivity">
+
+    <!-- Title TextView -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Nhập Kho"
+        android:textAlignment="center"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Top ImageView -->
+    <ImageView
+        android:id="@+id/imageViewTop"
+        android:layout_width="85dp"
+        android:layout_height="83dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.874"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        app:srcCompat="@drawable/ong21" />
+
+    <!-- Mã Kho EditText -->
+    <EditText
+        android:id="@+id/edtMaKho"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/edit_text_background"
+        android:hint="Mã Kho"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewTop"
+        app:layout_constraintWidth_percent="0.8"/>
+
+    <!-- Mã Sách Spinner -->
+    <Spinner
+        android:id="@+id/spinnerMaSach"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/spinner_background"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtMaKho"
+        app:layout_constraintWidth_percent="0.8"/>
+
+    <!-- Ngày Nhập TextView -->
+    <TextView
+        android:id="@+id/tvNgayNhap"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/text_view_background"
+        android:padding="12dp"
+        android:text="Ngày nhập"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerMaSach"
+        app:layout_constraintWidth_percent="0.8"/>
+
+    <!-- Số Lượng Nhập EditText -->
+    <EditText
+        android:id="@+id/edtSoLuongNhap"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edit_text_background"
+        android:hint="Số Lượng Nhập"
+        android:inputType="number"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNgayNhap"
+        app:layout_constraintWidth_percent="0.8"/>
+
+    <!-- Giá Nhập EditText -->
+    <EditText
+        android:id="@+id/edtGiaNhap"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edit_text_background"
+        android:hint="Giá Nhập"
+        android:inputType="numberDecimal"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtSoLuongNhap"
+        app:layout_constraintWidth_percent="0.8"/>
+
+    <!-- Button Nhập Kho -->
+    <Button
+        android:id="@+id/btnNhapKho"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/buttonitems"
+        android:text="Nhập Kho"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtGiaNhap"
+        app:layout_constraintWidth_percent="0.8"/>
+
+    <!-- Bottom ImageView -->
+    <ImageView
+        android:id="@+id/imageViewBottom"
+        android:layout_width="98dp"
+        android:layout_height="82dp"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.146"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ongsach2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
