@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -34,6 +35,9 @@ public class LoginActivity extends AppCompatActivity {
         inputPassword = findViewById(R.id.inputPassword);
         btnLogin = findViewById(R.id.btnLogin);
         dbHelper = new Database(this);
+
+        TextView btn = findViewById(R.id.SignupClick);
+        btn.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, SignupActivity.class)));
 
         btnLogin.setOnClickListener(v -> login());
     }

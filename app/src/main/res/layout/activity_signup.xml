@@ -197,34 +197,6 @@
         app:layout_constraintStart_toStartOf="@+id/inputPassword"
         app:layout_constraintTop_toBottomOf="@+id/inputPassword" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="347dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignup">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/have_an_account"
-            android:textColor="@color/Gray"
-            android:textSize="22sp" />
-
-        <TextView
-            android:id="@+id/LoginClick"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/login_click"
-            android:textColor="#FF6750a4"
-            android:textSize="23sp" />
-    </LinearLayout>
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="107dp"

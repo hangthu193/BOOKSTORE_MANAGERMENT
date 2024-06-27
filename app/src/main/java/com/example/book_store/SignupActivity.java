@@ -44,9 +44,6 @@ public class SignupActivity extends AppCompatActivity {
             return insets;
         });
 
-        TextView btn = findViewById(R.id.LoginClick);
-        btn.setOnClickListener(v -> startActivity(new Intent(SignupActivity.this, LoginActivity.class)));
-
         btnSignup.setOnClickListener(v -> signup());
     }
 

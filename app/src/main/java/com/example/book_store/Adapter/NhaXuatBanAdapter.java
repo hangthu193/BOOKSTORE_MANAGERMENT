@@ -1,13 +1,18 @@
-package com.example.book_store.adapter;
+package com.example.book_store.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
-import com.example.book_store.model.NhaXuatBan;
+
 import com.example.book_store.R;
+import com.example.book_store.Sua_nxbActivity;
+import com.example.book_store.model.NhaXuatBan;
+
 import java.util.List;
 
 public class NhaXuatBanAdapter extends BaseAdapter {
@@ -46,16 +51,24 @@ public class NhaXuatBanAdapter extends BaseAdapter {
         TextView tvMaNXB = view.findViewById(R.id.tvMaNXB);
         TextView tvTenNXB = view.findViewById(R.id.tvTenNXB);
         TextView tvDiaChi = view.findViewById(R.id.tvDiaChi);
+        Button btnSua = view.findViewById(R.id.btnSua);
 
         NhaXuatBan nxb = mListNXB.get(position);
         tvMaNXB.setText(nxb.getMaNXB());
         tvTenNXB.setText(nxb.getTenNXB());
         tvDiaChi.setText(nxb.getDiaChi());
 
+        btnSua.setOnClickListener(v -> {
+            Intent intent = new Intent(mContext, Sua_nxbActivity.class);
+            intent.putExtra("MaNXB", nxb.getMaNXB());
+            intent.putExtra("TenNXB", nxb.getTenNXB());
+            intent.putExtra("DiaChi", nxb.getDiaChi());
+            mContext.startActivity(intent);
+        });
+
         return view;
     }
 
-    // Phương thức để cập nhật dữ liệu của adapter
     public void updateData(List<NhaXuatBan> newList) {
         mListNXB.clear();
         mListNXB.addAll(newList);

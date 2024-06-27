@@ -28,7 +28,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/input_bg"
         android:ems="10"
@@ -67,19 +67,65 @@
         app:layout_constraintTop_toBottomOf="@+id/inputUsername"
         android:autofillHints="password"/>
 
+    <TextView
+        android:id="@+id/forgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/forgot_password"
+        android:textColor="@color/Gray"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="@+id/inputPassword"
+        app:layout_constraintTop_toBottomOf="@+id/inputPassword" />
+
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="85dp"
         android:background="@drawable/button_bg"
         android:fontFamily="serif"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="10dp"
         android:text="@string/login_btn"
+        android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/inputPassword"
         app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="@+id/inputPassword"
         app:layout_constraintTop_toBottomOf="@+id/forgotPassword" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="347dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/create_a_new_account"
+            android:textColor="@color/Gray"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/SignupClick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/signup_click"
+            android:textColor="#FF6750a4"
+            android:textSize="23sp" />
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/imageView"
@@ -108,16 +154,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.942"
         app:srcCompat="@drawable/nine" />
-
-    <TextView
-        android:id="@+id/forgotPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/forgot_password"
-        android:textColor="@color/Gray"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="@+id/inputPassword"
-        app:layout_constraintTop_toBottomOf="@+id/inputPassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
