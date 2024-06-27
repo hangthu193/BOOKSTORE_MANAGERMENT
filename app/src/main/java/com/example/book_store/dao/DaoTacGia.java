@@ -1,4 +1,4 @@
-package com.example.book_store.dao;
+package com.example.book_store.DAO;
 
 import android.app.Activity;
 import android.content.ContentValues;
