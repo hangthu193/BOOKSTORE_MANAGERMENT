@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txtmakho"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Mã Kho"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtmasach"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:text="Mã Sách"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtngaynhap"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:text="Ngày nhập"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtsluong"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:text="Số lượng nhập"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtgianhap"
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:text="Giá nhập"
+        android:textStyle="bold" />
+</LinearLayout>

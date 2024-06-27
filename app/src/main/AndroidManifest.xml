@@ -10,35 +10,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
-        tools:targetApi="31" >
-        <activity
-            android:name=".category.CategoryDetail"
-            android:exported="false" />
-        <activity
-            android:name=".category.Category"
-            android:exported="false" />
-        <activity
-            android:name=".book.BookUpdate"
-            android:exported="false" />
-        <activity
-            android:name=".Addbook"
-            android:exported="false" />
-        <activity
-            android:name=".book.Bookdetail"
-            android:exported="false" />
-        <activity
-            android:name=".book.Book"
-            android:exported="false" />
-        <activity
-            android:name=".newpass"
-            android:exported="false" />
-        <activity
-            android:name=".Forgot_password"
-            android:exported="false" />
+        android:theme="@style/Theme.Book_Store"
+        tools:targetApi="31">
         <activity
             android:name=".MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
