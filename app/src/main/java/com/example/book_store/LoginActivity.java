@@ -1,9 +1,12 @@
 package com.example.book_store;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -12,10 +15,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.book_store.password.Forgot_password;
+
+import org.w3c.dom.Text;
+
 public class LoginActivity extends AppCompatActivity {
 
     EditText inputUsername, inputPassword;
     Button btnLogin;
+    TextView forgotPassword;
     Database dbHelper;
 
     @Override
@@ -36,6 +44,18 @@ public class LoginActivity extends AppCompatActivity {
         dbHelper = new Database(this);
 
         btnLogin.setOnClickListener(v -> login());
+        forgotPassword=findViewById(R.id.forgotPassword);
+        forgotPassword.setBackgroundColor(Color.TRANSPARENT);
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, Forgot_password.class);
+
+
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void login() {
