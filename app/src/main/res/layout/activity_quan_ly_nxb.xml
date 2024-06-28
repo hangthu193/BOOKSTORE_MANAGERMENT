@@ -12,11 +12,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="serif"
         android:text="Quản lý nhà xuất bản"
-        android:textColor="#ff6750a4"
-        android:textSize="35sp"
+        android:textColor="@color/Purple"
+        android:textSize="25sp"
         android:textStyle="bold" />
 
     <ListView
@@ -29,7 +29,7 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnThem"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"

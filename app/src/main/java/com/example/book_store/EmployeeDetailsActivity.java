@@ -1,6 +1,8 @@
 package com.example.book_store;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.Button;
@@ -10,14 +12,13 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+
 public class EmployeeDetailsActivity extends AppCompatActivity {
 
     TextView tvMaNhanVien, tvTenNhanVien, tvGioiTinh, tvSoDienThoai, tvDiaChi, tvTenDangNhap;
     Button btnSuaThongTinCaNhan, btnDangXuat;
     Database dbHelper;
     String username;
-
-    // Activity Result Launcher
     private ActivityResultLauncher<Intent> editEmployeeLauncher;
 
     @Override
@@ -26,6 +27,8 @@ public class EmployeeDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_employee_details);
 
         dbHelper = new Database(this);
+        SharedPreferences sharedPreferences = getSharedPreferences("SessionPref", Context.MODE_PRIVATE);
+        username = sharedPreferences.getString("username", null);
 
         tvMaNhanVien = findViewById(R.id.tvMaNhanVien);
         tvTenNhanVien = findViewById(R.id.tvTenNhanVien);
@@ -36,7 +39,7 @@ public class EmployeeDetailsActivity extends AppCompatActivity {
         btnSuaThongTinCaNhan = findViewById(R.id.btnSuaThongTinCaNhan);
         btnDangXuat = findViewById(R.id.btnDangXuat);
 
-        username = getIntent().getStringExtra("username");
+
         loadEmployeeDetails(username);
 
         // Initialize Activity Result Launcher

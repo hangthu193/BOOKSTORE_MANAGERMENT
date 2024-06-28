@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.content.Intent;
 
 import androidx.fragment.app.DialogFragment;
 
@@ -32,10 +33,9 @@ public class LogoutDialogFragment extends DialogFragment {
     }
 
     private void logout() {
-        // Thực hiện hành động đăng xuất ở đây
-        // Ví dụ: chuyển về màn hình đăng nhập
-        getActivity().finish(); // Kết thúc activity hiện tại
-        // Intent intent = new Intent(getActivity(), LoginActivity.class);
-        // startActivity(intent);
+        getActivity().finish();
+        Intent intent = new Intent(getActivity(), LoginActivity.class);
+        startActivity(intent);
     }
+
 }

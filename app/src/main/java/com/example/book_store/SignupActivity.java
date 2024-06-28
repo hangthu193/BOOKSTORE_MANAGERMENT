@@ -23,7 +23,6 @@ public class SignupActivity extends AppCompatActivity {
     Button btnSignup;
     Database dbHelper;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

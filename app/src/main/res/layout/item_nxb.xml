@@ -20,8 +20,8 @@
             android:layout_height="wrap_content"
             android:text="Mã NXB"
             android:textSize="16sp"
+            android:textColor="@color/Gray"
             android:textStyle="bold"
-            android:textColor="@android:color/black"
             android:paddingBottom="4dp" />
 
         <TextView
@@ -30,8 +30,8 @@
             android:layout_height="wrap_content"
             android:text="Tên NXB"
             android:textSize="16sp"
+            android:textColor="@color/Gray"
             android:textStyle="bold"
-            android:textColor="@android:color/black"
             android:paddingBottom="4dp" />
 
         <TextView
@@ -40,14 +40,14 @@
             android:layout_height="wrap_content"
             android:text="Địa chỉ"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/black" />
+            android:textColor="@color/Gray"
+            android:textStyle="bold"/>
     </LinearLayout>
 
     <Button
         android:id="@+id/btnSua"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
         android:text="Sửa"
         android:background="@drawable/button_bg"
         android:textColor="@android:color/white"

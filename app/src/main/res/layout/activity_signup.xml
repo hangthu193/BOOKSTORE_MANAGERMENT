@@ -15,7 +15,7 @@
         android:fontFamily="serif"
         android:text="@string/sign_up"
         android:textColor="#ff6750a4"
-        android:textSize="50sp"
+        android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,13 +36,13 @@
         android:ems="10"
         android:hint="@string/name"
         android:inputType="text"
-        android:paddingStart="20dp"
-        android:paddingTop="15dp"
+        android:paddingStart="15dp"
+        android:paddingTop="10dp"
         android:paddingEnd="10dp"
-        android:paddingBottom="15dp"
+        android:paddingBottom="10dp"
         android:textColor="@color/Gray"
         android:textColorHint="@color/Gray"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
@@ -71,7 +71,7 @@
             android:layout_marginEnd="16dp"
             android:text="@string/gender"
             android:textColor="@color/Gray"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <RadioButton
             android:id="@+id/radioMale"
@@ -80,7 +80,7 @@
             android:layout_weight="1"
             android:text="@string/male"
             android:textColor="@color/Gray"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <RadioButton
             android:id="@+id/radioFemale"
@@ -90,7 +90,7 @@
             android:layout_weight="1"
             android:text="@string/female"
             android:textColor="@color/Gray"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
     </RadioGroup>
 
     <EditText
@@ -103,13 +103,13 @@
         android:ems="10"
         android:hint="@string/phone_number"
         android:inputType="phone"
-        android:paddingStart="20dp"
-        android:paddingTop="15dp"
+        android:paddingStart="15dp"
+        android:paddingTop="10dp"
         android:paddingEnd="10dp"
-        android:paddingBottom="15dp"
+        android:paddingBottom="10dp"
         android:textColor="@color/Gray"
         android:textColorHint="@color/Gray"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/genderRadioGroup"
         app:layout_constraintStart_toStartOf="@+id/genderRadioGroup"
         app:layout_constraintTop_toBottomOf="@+id/genderRadioGroup" />
@@ -124,13 +124,13 @@
         android:ems="10"
         android:hint="@string/address"
         android:inputType="textPostalAddress"
-        android:paddingStart="20dp"
-        android:paddingTop="15dp"
+        android:paddingStart="15dp"
+        android:paddingTop="10dp"
         android:paddingEnd="10dp"
-        android:paddingBottom="15dp"
+        android:paddingBottom="10dp"
         android:textColor="@color/Gray"
         android:textColorHint="@color/Gray"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/inputPhoneNumber"
         app:layout_constraintStart_toStartOf="@+id/inputPhoneNumber"
         app:layout_constraintTop_toBottomOf="@+id/inputPhoneNumber" />
@@ -145,13 +145,13 @@
         android:ems="10"
         android:hint="@string/username"
         android:inputType="text"
-        android:paddingStart="20dp"
-        android:paddingTop="15dp"
+        android:paddingStart="15dp"
+        android:paddingTop="10dp"
         android:paddingEnd="10dp"
-        android:paddingBottom="15dp"
+        android:paddingBottom="10dp"
         android:textColor="@color/Gray"
         android:textColorHint="@color/Gray"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/inputAddress"
         app:layout_constraintStart_toStartOf="@+id/inputAddress"
         app:layout_constraintTop_toBottomOf="@+id/inputAddress" />
@@ -166,62 +166,60 @@
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
-        android:paddingStart="20dp"
-        android:paddingTop="15dp"
+        android:paddingStart="15dp"
+        android:paddingTop="10dp"
         android:paddingEnd="10dp"
-        android:paddingBottom="15dp"
+        android:paddingBottom="10dp"
         android:textColor="@color/Gray"
         android:textColorHint="@color/Gray"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/inputUsername"
         app:layout_constraintStart_toStartOf="@+id/inputUsername"
         app:layout_constraintTop_toBottomOf="@+id/inputUsername" />
 
     <Button
         android:id="@+id/btnSignup"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="43dp"
         android:layout_marginStart="85dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="85dp"
         android:background="@drawable/button_bg"
         android:fontFamily="serif"
-        android:paddingStart="20dp"
-        android:paddingTop="10dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="10dp"
         android:text="@string/signup_btn"
         android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/inputPassword"
         app:layout_constraintStart_toStartOf="@+id/inputPassword"
         app:layout_constraintTop_toBottomOf="@+id/inputPassword" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="107dp"
-        android:layout_height="134dp"
+        android:layout_width="95dp"
+        android:layout_height="100dp"
         android:layout_marginBottom="70dp"
         android:contentDescription="@string/eight_image"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.981"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.03"
+        app:layout_constraintVertical_bias="0.028"
         app:srcCompat="@drawable/eight" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="152dp"
-        android:layout_height="122dp"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
         android:contentDescription="@string/three_image"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.942"
+        app:layout_constraintVertical_bias="0.923"
         app:srcCompat="@drawable/three" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
