@@ -1,4 +1,4 @@
-package com.example.book_store.Adapter;
+package com.example.book_store.adapter;
 
 import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
 
@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.example.book_store.DAO.DaoTacGia;
 import com.example.book_store.R;
-import com.example.book_store.Model.TacGia;
+import com.example.book_store.model.TacGia;
 import com.example.book_store.updateAtivity;
 
 import java.util.ArrayList;

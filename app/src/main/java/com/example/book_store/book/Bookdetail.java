@@ -106,22 +106,15 @@ public class Bookdetail extends AppCompatActivity {
         Bitmap bitmap= BitmapFactory.decodeByteArray(book.getAnh(), 0,book.getAnh().length);
         img.setImageBitmap(bitmap);
         Button btnDelete= findViewById(R.id.btn_delete);
-
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean checkDel= daosach.deleteBook(db,bookId);
-                if(checkDel){
-                    Toast.makeText(Bookdetail.this, "Xoá sách thành công!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(Bookdetail.this, Book.class);
-                    startActivity(intent);
-                }
-                else {
-                    Toast.makeText(Bookdetail.this, "Xoá sách không thành công!", Toast.LENGTH_SHORT).show();
-                }
-
+                openDeleteBook(Gravity.CENTER, daosach.getBookDetail(db,bookId));
             }
         });
+
+//
+
 
 
         ImageButton btn_backdetail = findViewById(R.id.btn_backdetail);
@@ -139,6 +132,57 @@ public class Bookdetail extends AppCompatActivity {
         });
 
 
+    }
+
+    private void openDeleteBook(int gravity, BookDetailProperty bookDetailProperty){
+        String bookId = getIntent().getStringExtra("BOOK_ID");
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.layout_dialog_deletebook);
+
+        Window window = dialog.getWindow();
+        if(window == null){
+            return;
+        }
+
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//
+        WindowManager.LayoutParams windowAttributes = window.getAttributes();
+        windowAttributes.gravity = gravity;
+        window.setAttributes(windowAttributes);
+
+        if(Gravity.CENTER == gravity){
+            dialog.setCancelable(true);
+        }else{
+            dialog.setCancelable(false);
+        }
+
+        ImageButton imgbtn_back= dialog.findViewById(R.id.imgbtn_back);
+        imgbtn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        Button btn_xacnhan= dialog.findViewById(R.id.btn_xacnhan);
+        btn_xacnhan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean checkDel= daosach.deleteBook(db,bookId);
+                if(checkDel){
+                    Toast.makeText(Bookdetail.this, "Xoá sách thành công!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(Bookdetail.this, Book.class);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(Bookdetail.this, "Xoá sách không thành công!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+        dialog.show();
     }
     private void ChonNgay(){
         Calendar calendar = Calendar.getInstance();

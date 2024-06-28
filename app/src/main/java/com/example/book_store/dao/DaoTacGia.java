@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.book_store.Database;
-import com.example.book_store.Model.TacGia;
+import com.example.book_store.model.TacGia;
 
 import java.util.ArrayList;
 

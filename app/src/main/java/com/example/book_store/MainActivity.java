@@ -12,9 +12,9 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.book_store.Adapter.MyAdapter;
+import com.example.book_store.adapter.MyAdapter;
 import com.example.book_store.DAO.DaoTacGia;
-import com.example.book_store.Model.TacGia;
+import com.example.book_store.model.TacGia;
 
 import java.util.ArrayList;
 
@@ -80,22 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 openUpdateActivity(selectedTacGia.getMaTG());
             }
         });
-//        btn_forgotpass = findViewById(R.id.btn_Forgotpass);
-//        btn_forgotpass.setOnClickListener(v -> {
-//            Intent myIntent = new Intent(MainActivity.this,Forgot_password.class);
-//            startActivity(myIntent);
-//
-//        });
-//        btn_sach = findViewById(R.id.btn_sach);
-//        btn_sach.setOnClickListener(v -> {
-//            Intent myIntent = new Intent(MainActivity.this, Book.class);
-//            startActivity(myIntent);
-//        });
-//        btn_category = findViewById(R.id.btn_category);
-//        btn_category.setOnClickListener(v -> {
-//            Intent myIntent = new Intent(MainActivity.this, Category.class);
-//            startActivity(myIntent);
-//        });
+
     }
 
     private void loadData() {

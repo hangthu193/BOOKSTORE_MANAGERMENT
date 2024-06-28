@@ -82,23 +82,82 @@ public class CategoryDetail extends AppCompatActivity {
                 openUpdateCategory(Gravity.CENTER, daoTheLoai.getCategoryDetail(db, categoryId));
             }
         });
+//        btn_delete.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//             boolean check=  daoTheLoai.deleteCategory(db, categoryId);
+//             if (check){
+//                 Toast.makeText(getApplicationContext(), "Xoá thể loại thành công!", Toast.LENGTH_SHORT).show();
+//                 Intent myIntent = new Intent(CategoryDetail.this, Category.class);
+//                 startActivity(myIntent);
+//             }
+//             else {
+//                 Toast.makeText(getApplicationContext(), "Không thể xoá thể loại do đã tồn tại sách!", Toast.LENGTH_SHORT).show();
+//                 Intent myIntent = new Intent(CategoryDetail.this, CategoryDetail.class);
+//                 myIntent.putExtra("CATEGORY_ID", categoryId);
+//                 startActivity(myIntent);
+//             }
+//            }
+//        });
+
+        Button btn_delete= findViewById(R.id.btn_delete);
         btn_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             boolean check=  daoTheLoai.deleteCategory(db, categoryId);
-             if (check){
-                 Toast.makeText(getApplicationContext(), "Xoá thể loại thành công!", Toast.LENGTH_SHORT).show();
-                 Intent myIntent = new Intent(CategoryDetail.this, Category.class);
-                 startActivity(myIntent);
-             }
-             else {
-                 Toast.makeText(getApplicationContext(), "Không thể xoá thể loại do đã tồn tại sách!", Toast.LENGTH_SHORT).show();
-                 Intent myIntent = new Intent(CategoryDetail.this, CategoryDetail.class);
-                 myIntent.putExtra("CATEGORY_ID", categoryId);
-                 startActivity(myIntent);
-             }
+                openDeleteCategory(Gravity.CENTER, daoTheLoai.getCategoryDetail(db,categoryId));
             }
         });
+    }
+
+    private void openDeleteCategory(int gravity, CategoryProperty categoryProperty){
+        String categoryId = getIntent().getStringExtra("CATEGORY_ID");
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.layout_dialog_deletebook);
+
+        Window window = dialog.getWindow();
+        if(window == null){
+            return;
+        }
+
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//
+        WindowManager.LayoutParams windowAttributes = window.getAttributes();
+        windowAttributes.gravity = gravity;
+        window.setAttributes(windowAttributes);
+
+        if(Gravity.CENTER == gravity){
+            dialog.setCancelable(true);
+        }else{
+            dialog.setCancelable(false);
+        }
+
+        ImageButton imgbtn_back= dialog.findViewById(R.id.imgbtn_back);
+        imgbtn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        Button btn_xacnhan= dialog.findViewById(R.id.btn_xacnhan);
+        btn_xacnhan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean checkDel= daoTheLoai.deleteCategory(db,categoryId);
+                if(checkDel){
+                    Toast.makeText(CategoryDetail.this, "Xoá sách thành công!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(CategoryDetail.this, Category.class);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(CategoryDetail.this, "Xoá sách không thành công!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+        dialog.show();
     }
     private boolean validateCategoryInputs(EditText tentheloai) {
 

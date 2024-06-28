@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.book_store.DAO.DaoTacGia;
-import com.example.book_store.Model.TacGia;
+import com.example.book_store.model.TacGia;
 
 public class updateAtivity extends AppCompatActivity {
     Button btnxn, btnhuy;
