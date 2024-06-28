@@ -1,12 +1,16 @@
 package com.example.book_store;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -18,10 +22,16 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.book_store.DAO.DaoKho;
 import com.example.book_store.model.Kho;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class KhoUpdate extends AppCompatActivity {
     private EditText edtMaKho, edtSoLuongNhap, edtGiaNhap;
+    private TextView cldDate;
     private Spinner spinnerMaSach;
     private Button btnUpdateKho;
     private DaoKho daoKho;
@@ -41,10 +51,43 @@ public class KhoUpdate extends AppCompatActivity {
         edtSoLuongNhap = findViewById(R.id.edtSoLuongNhap);
         edtGiaNhap = findViewById(R.id.edtGiaNhap);
         btnUpdateKho = findViewById(R.id.btnUpdateKho);
+        cldDate = findViewById(R.id.tvNgayNhap);
+        cldDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                int year;
+                int month;
+                int day;
+                final Calendar calendar = Calendar.getInstance();
+                try {
+                    Date date = sdf.parse(kho.getNgayNhap());
+                    calendar.setTime(date);
+                    year = calendar.get(Calendar.YEAR);
+                    month = calendar.get(Calendar.MONTH);
+                    day = calendar.get(Calendar.DAY_OF_MONTH);
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
+                }
+                DatePickerDialog date = new DatePickerDialog(KhoUpdate.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        calendar.set(year, month, dayOfMonth);
+                        Date selectedDate = calendar.getTime();
+
+                        // Định dạng ngày đã chọn
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                        String formattedDate = sdf.format(selectedDate);
+                        cldDate.setText(formattedDate);
+                    }
+                },year,month,day);
+                date.show();
+            }
+        });
 
         daoKho = new DaoKho(this);
         daoKho.open();
-        kho = (Kho) getIntent().getSerializableExtra("kho");
+        kho = (Kho) getIntent().getSerializableExtra("Kho");
 
         // Populate fields with kho data
         populateFields();
@@ -62,6 +105,7 @@ public class KhoUpdate extends AppCompatActivity {
         if (kho != null) {
             edtMaKho.setText(kho.getMaKho());
             // Assume spinner is populated after this method
+            cldDate.setText(kho.getNgayNhap());
             edtSoLuongNhap.setText(String.valueOf(kho.getSoLuongNhap()));
             edtGiaNhap.setText(String.valueOf(kho.getGiaNhap()));
         }
@@ -84,7 +128,7 @@ public class KhoUpdate extends AppCompatActivity {
         // Get values from inputs
         String maKho = edtMaKho.getText().toString().trim();
         String maSach = spinnerMaSach.getSelectedItem().toString();
-        String ngayNhap = daoKho.getCurrentDate(); // Assume current date is used as NgayNhap
+        String ngayNhap = cldDate.getText().toString(); // Assume current date is used as NgayNhap
         int soLuongNhap;
         int giaNhap;
 
