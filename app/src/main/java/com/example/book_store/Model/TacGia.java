@@ -1,4 +1,4 @@
-package com.example.book_store;
+package com.example.book_store.Model;
 
 public class TacGia {
     public String MaTG;

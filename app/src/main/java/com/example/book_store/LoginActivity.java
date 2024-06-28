@@ -18,6 +18,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.book_store.model.Employee;
 import com.example.book_store.password.Forgot_password;
 
 import org.w3c.dom.Text;
@@ -28,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     TextView forgotPassword;
     Database dbHelper;
-
+    Employee em;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

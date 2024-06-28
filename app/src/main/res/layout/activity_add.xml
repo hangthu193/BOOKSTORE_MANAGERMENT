@@ -66,9 +66,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
         android:layout_marginEnd="72dp"
+        android:background="@drawable/custom_btn_red"
         android:text="Hủy"
+        android:textColor="#FFFFFF"
         app:backgroundTint="@null"
-        android:background="@drawable/buttonitems"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editgt" />
 
@@ -92,8 +93,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
         android:layout_marginTop="68dp"
-        android:text="Xác nhận"
         android:background="@drawable/buttonitems"
+        android:text="Xác nhận"
+        android:textColor="#FFFFFF"
         app:backgroundTint="@null"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editgt" />

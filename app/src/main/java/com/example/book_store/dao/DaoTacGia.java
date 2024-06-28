@@ -1,13 +1,12 @@
 package com.example.book_store.DAO;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.book_store.Database;
-import com.example.book_store.TacGia;
+import com.example.book_store.Model.TacGia;
 
 import java.util.ArrayList;
 

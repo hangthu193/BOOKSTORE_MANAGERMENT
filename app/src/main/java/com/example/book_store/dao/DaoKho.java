@@ -77,7 +77,16 @@ public class DaoKho {
 
         return database.insert("Kho", null, values);
     }
+    public long updateKho(Kho kho) {
+        ContentValues values = new ContentValues();
+        values.put("MaKho", kho.getMaKho());
+        values.put("MaSach", kho.getMaSach());
+        values.put("NgayNhap", kho.getNgayNhap());
+        values.put("SoLuongNhap", kho.getSoLuongNhap());
+        values.put("GiaNhap", kho.getGiaNhap());
 
+        return database.update("Kho", values, "MaKho = ?", new String[]{kho.getMaKho()});
+    }
     public List<String> getAllMaSach() {
         List<String> maSachList = new ArrayList<>();
         SQLiteDatabase db = null;

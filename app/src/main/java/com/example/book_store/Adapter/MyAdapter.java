@@ -1,6 +1,5 @@
 package com.example.book_store.Adapter;
 
-import static android.content.Context.MODE_PRIVATE;
 import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
 
 import android.app.Activity;
@@ -8,9 +7,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,15 +17,9 @@ import android.widget.Toast;
 
 import com.example.book_store.DAO.DaoTacGia;
 import com.example.book_store.R;
-import com.example.book_store.TacGia;
+import com.example.book_store.Model.TacGia;
 import com.example.book_store.updateAtivity;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.channels.AsynchronousFileChannel;
 import java.util.ArrayList;
 
 public class MyAdapter extends BaseAdapter {
