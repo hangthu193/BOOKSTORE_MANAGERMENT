@@ -13,6 +13,8 @@
     <string name="signup_btn">Đăng ký</string>
     <string name="create_a_new_account">Tạo tài khoản mới?</string>
     <string name="signup_click">Đăng ký</string>
+    <string name="have_an_account">Bạn đã có tài khoản?</string>
+    <string name="login_click">Đăng nhập</string>
 
     <string name="login">Đăng nhập</string>
     <string name="forgot_password">Quên mật khẩu?</string>

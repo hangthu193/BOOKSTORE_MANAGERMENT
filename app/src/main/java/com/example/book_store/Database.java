@@ -162,10 +162,10 @@ public class Database extends SQLiteOpenHelper {
     public String generatePublisherID() {
         SQLiteDatabase db = this.getReadableDatabase();
         String tableName = "NXB"; // Tên bảng
-        Cursor cursor = db.rawQuery("PRAGMA table_info(" + tableName + ")", null);
+        Cursor cursor = db.rawQuery("SELECT MaNXB FROM " + tableName + " ORDER BY MaNXB DESC LIMIT 1", null);
         int id = 0;
         if (cursor.moveToFirst()) {
-            id = cursor.getInt(0);
+            id = Integer.parseInt(cursor.getString(0).replace("NXB", ""));
         }
         cursor.close();
         return String.format(Locale.getDefault(), "NXB%04d", id + 1);
@@ -200,6 +200,7 @@ public class Database extends SQLiteOpenHelper {
         cursor.close();
         return count > 0;
     }
+
     public void updatePublisherDetails(String id, String newName, String newAddress) {
         SQLiteDatabase db = this.getWritableDatabase();
         String tableName = "NXB";
@@ -213,6 +214,7 @@ public class Database extends SQLiteOpenHelper {
         db.update(tableName, contentValues, columnID + " = ?", new String[]{id});
         db.close();
     }
+
     public Cursor getEmployeeDetails(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
         String tableName = "NhanVien"; // Tên bảng

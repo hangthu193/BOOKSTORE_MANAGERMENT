@@ -9,11 +9,14 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.book_store.DAO.DaoNhaXuatBan;
+
 public class Them_nxbActivity extends AppCompatActivity {
 
     EditText etMaNXB, etTenNXB, etDiaChi;
     Button btnHuy, btnXacNhan;
     Database dbHelper;
+    DaoNhaXuatBan nxbDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +29,9 @@ public class Them_nxbActivity extends AppCompatActivity {
         btnHuy = findViewById(R.id.btnHuy);
         btnXacNhan = findViewById(R.id.btnXacNhan);
 
-        // Khởi tạo đối tượng Database
+        // Khởi tạo đối tượng Database và DaoNhaXuatBan
         dbHelper = new Database(this);
+        nxbDAO = new DaoNhaXuatBan(this);
 
         btnHuy.setOnClickListener(v -> finish());
         btnXacNhan.setOnClickListener(v -> themNXB());
@@ -50,16 +54,15 @@ public class Them_nxbActivity extends AppCompatActivity {
         }
 
         String maNXB = dbHelper.generatePublisherID();
-        boolean success = dbHelper.addPublisher(maNXB, tenNXB, diaChiNXB);
+        boolean success = nxbDAO.themNhaXuatBan(maNXB, tenNXB, diaChiNXB);
 
         if (success) {
             Toast.makeText(this, "Thêm nhà xuất bản thành công", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, QuanLy_NxbActivity.class);
             startActivity(intent);
-            finish(); // Đóng activity hiện tại sau khi chuyển sang activity mới
+            finish();
         } else {
             Toast.makeText(this, "Thêm nhà xuất bản thất bại", Toast.LENGTH_SHORT).show();
         }
-
     }
 }

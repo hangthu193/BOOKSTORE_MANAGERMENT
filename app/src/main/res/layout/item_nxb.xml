@@ -20,7 +20,6 @@
             android:layout_height="wrap_content"
             android:text="Mã NXB"
             android:textSize="16sp"
-            android:textColor="@color/Gray"
             android:textStyle="bold"
             android:paddingBottom="4dp" />
 
@@ -30,7 +29,6 @@
             android:layout_height="wrap_content"
             android:text="Tên NXB"
             android:textSize="16sp"
-            android:textColor="@color/Gray"
             android:textStyle="bold"
             android:paddingBottom="4dp" />
 
@@ -40,7 +38,6 @@
             android:layout_height="wrap_content"
             android:text="Địa chỉ"
             android:textSize="16sp"
-            android:textColor="@color/Gray"
             android:textStyle="bold"/>
     </LinearLayout>
 
@@ -49,7 +46,7 @@
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:text="Sửa"
-        android:background="@drawable/button_bg"
+        android:background="@drawable/custom_btn"
         android:textColor="@android:color/white"
         android:padding="8dp"
         android:layout_gravity="center_vertical" />

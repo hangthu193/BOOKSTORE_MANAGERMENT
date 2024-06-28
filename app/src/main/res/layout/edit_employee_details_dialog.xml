@@ -38,7 +38,6 @@
                 android:layout_height="50dp"
                 android:gravity="center_vertical"
                 android:text="@string/id"
-                android:textColor="@color/Gray"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -60,7 +59,6 @@
                 android:layout_height="50dp"
                 android:gravity="center_vertical"
                 android:text="Tên Đăng Nhập: "
-                android:textColor="@color/Gray"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -81,7 +79,6 @@
                 android:layout_height="50dp"
                 android:gravity="center_vertical"
                 android:text="Địa Chỉ: "
-                android:textColor="@color/Gray"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -102,7 +99,6 @@
                 android:layout_height="50dp"
                 android:gravity="center_vertical"
                 android:text="Giới Tính: "
-                android:textColor="@color/Gray"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -123,7 +119,6 @@
                 android:layout_height="50dp"
                 android:gravity="center_vertical"
                 android:text="Số điện thoại: "
-                android:textColor="@color/Gray"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
