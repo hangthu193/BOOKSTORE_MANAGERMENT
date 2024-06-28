@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.book_store.Database;
 import com.example.book_store.model.NhaXuatBan;
-import com.example.book_store.model.NhaXuatBan;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,49 +19,46 @@ public class DaoNhaXuatBan {
         db = dbHelper.getWritableDatabase();
     }
 
-    public List<NhaXuatBan> layDanhSachNhaXuatBan(SQLiteDatabase db) {
-        List<NhaXuatBan> danhSachNXB = new ArrayList<>();
-        Cursor cursor = null;
-        try {
-            String query = "SELECT MaNXB, TenNXB, DiaChi FROM NXB";
-            cursor = db.rawQuery(query, null);
-            if (cursor.moveToFirst()) {
-                do {
-                    String maNXB = cursor.getString(0);
-                    String tenNXB = cursor.getString(1);
-                    String diaChi = cursor.getString(2);
-                    NhaXuatBan nxb = new NhaXuatBan(maNXB, tenNXB, diaChi);
-                    danhSachNXB.add(nxb);
-                } while (cursor.moveToNext());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (cursor != null) {
-                cursor.close();
-            }
+    // Lấy danh sách nhà xuất bản
+    public List<NhaXuatBan> layDanhSachNhaXuatBan() {
+        List<NhaXuatBan> danhSach = new ArrayList<>();
+        Cursor cursor = db.query("NXB", null, null, null, null, null, null);
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                String maNXB = cursor.getString(cursor.getColumnIndexOrThrow("MaNXB"));
+                String tenNXB = cursor.getString(cursor.getColumnIndexOrThrow("TenNXB"));
+                String diaChi = cursor.getString(cursor.getColumnIndexOrThrow("DiaChi"));
+                danhSach.add(new NhaXuatBan(maNXB, tenNXB, diaChi));
+            } while (cursor.moveToNext());
+            cursor.close();
         }
-        return danhSachNXB;
+        return danhSach;
     }
 
 
+    // Thêm mới nhà xuất bản
+    public boolean themNhaXuatBan(String id, String name, String address) {
+        if (checkPublisherExist(name)) {
+            return false; // Trả về false nếu tên nhà xuất bản đã tồn tại
+        }
 
-//    public boolean themNhaXuatBan(String maNXB, String tenNXB, String diaChi) {
-//        ContentValues values = new ContentValues();
-//        values.put(Database.COLUMN_PUBLISHER_ID, maNXB);
-//        values.put(Database.COLUMN_PUBLISHER_NAME, tenNXB);
-//        values.put(Database.COLUMN_PUBLISHER_ADDRESS, diaChi);
-//
-//        long result = db.insert(Database.TABLE_PUBLISHER, null, values);
-//        return result != -1;
-//    }
+        ContentValues values = new ContentValues();
+        values.put("MaNXB", id);
+        values.put("TenNXB", name);
+        values.put("DiaChi", address);
+        long result = db.insert("NXB", null, values);
+        return result != -1;
+    }
 
-//    public boolean capNhatNhaXuatBan(String maNXB, String tenNXB, String diaChi) {
-//        ContentValues values = new ContentValues();
-//        values.put(Database.COLUMN_PUBLISHER_NAME, tenNXB);
-//        values.put(Database.COLUMN_PUBLISHER_ADDRESS, diaChi);
-//
-//        int rowsAffected = db.update(Database.TABLE_PUBLISHER, values, Database.COLUMN_PUBLISHER_ID + " = ?", new String[]{maNXB});
-//        return rowsAffected > 0;
-//    }
+    // Kiểm tra sự tồn tại của nhà xuất bản
+    private boolean checkPublisherExist(String name) {
+        String[] columns = {"TenNXB"};
+        String selection = "TenNXB = ?";
+        String[] selectionArgs = {name};
+        Cursor cursor = db.query("NXB", columns, selection, selectionArgs, null, null, null);
+        int count = cursor.getCount();
+        cursor.close();
+        return count > 0;
+    }
+
 }

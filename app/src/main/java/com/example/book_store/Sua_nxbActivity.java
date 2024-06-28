@@ -1,7 +1,6 @@
 package com.example.book_store;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
@@ -28,7 +27,6 @@ public class Sua_nxbActivity extends AppCompatActivity {
         btnHuy = findViewById(R.id.btnHuy);
         btnXacNhan = findViewById(R.id.btnXacNhan);
 
-        // Lấy dữ liệu mã NXB cần sửa từ Intent
         Intent intent = getIntent();
         if (intent != null) {
             maNXBToUpdate = intent.getStringExtra("MaNXB");
@@ -40,7 +38,6 @@ public class Sua_nxbActivity extends AppCompatActivity {
             etDiaChi.setText(diaChi);
         }
 
-        // Khởi tạo đối tượng Database
         dbHelper = new Database(this);
 
         btnHuy.setOnClickListener(v -> finish());
@@ -65,8 +62,7 @@ public class Sua_nxbActivity extends AppCompatActivity {
 
         dbHelper.updatePublisherDetails(maNXBToUpdate, tenNXB, diaChiNXB);
 
-        Toast.makeText(this, "Cập nhật nhà xuất bản thành công", Toast.LENGTH_SHORT).show();
-
+        Toast.makeText(this, "Sửa nhà xuất bản thành công", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, QuanLy_NxbActivity.class);
         startActivity(intent);
         finish();

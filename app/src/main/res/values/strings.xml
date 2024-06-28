@@ -11,6 +11,8 @@
     <string name="username">Tên đăng nhập</string>
     <string name="password">Mật khẩu</string>
     <string name="signup_btn">Đăng ký</string>
+    <string name="create_a_new_account">Tạo tài khoản mới?</string>
+    <string name="signup_click">Đăng ký</string>
     <string name="have_an_account">Bạn đã có tài khoản?</string>
     <string name="login_click">Đăng nhập</string>
 
@@ -25,7 +27,6 @@
 
     <string name="btn_edit_profile">Chỉnh sửa</string>
     <string name="btn_logout">Đăng Xuất</string>
-
 
     <string name="btn_cancel">Hủy</string>
     <string name="btn_confirm">Xác nhận</string>

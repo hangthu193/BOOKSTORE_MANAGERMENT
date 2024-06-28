@@ -29,7 +29,6 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     TextView forgotPassword;
     Database dbHelper;
-    Employee em;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,12 +53,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, Forgot_password.class);
-
-
                 startActivity(intent);
             }
         });
 
+        TextView btnSignUp = findViewById(R.id.SignupClick);
+        btnSignUp.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, SignupActivity.class)));
     }
 
     private void login() {

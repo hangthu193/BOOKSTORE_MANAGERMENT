@@ -9,9 +9,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-
-import androidx.annotation.Nullable;
-
 import com.example.book_store.model.Selected;
 
 import java.io.File;
@@ -159,47 +156,7 @@ public class Database extends SQLiteOpenHelper {
         }
         return categories;
     }
-    public String generatePublisherID() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        String tableName = "NXB"; // Tên bảng
-        Cursor cursor = db.rawQuery("PRAGMA table_info(" + tableName + ")", null);
-        int id = 0;
-        if (cursor.moveToFirst()) {
-            id = cursor.getInt(0);
-        }
-        cursor.close();
-        return String.format(Locale.getDefault(), "NXB%04d", id + 1);
-    }
 
-    public boolean addPublisher(String id, String name, String address) {
-        if (checkPublisherExist(name)) {
-            return false; // Trả về false nếu tên nhà xuất bản đã tồn tại
-        }
-        SQLiteDatabase db = this.getWritableDatabase();
-        String tableName = "NXB";
-        String columnID = "MaNXB";
-        String columnName = "TenNXB";
-        String columnAddress = "DiaChi";
-
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(columnID, id);
-        contentValues.put(columnName, name);
-        contentValues.put(columnAddress, address);
-        long result = db.insert(tableName, null, contentValues);
-        db.close();
-        return result != -1;
-    }
-
-    public boolean checkPublisherExist(String name) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        String tableName = "NXB";
-        String columnName = "TenNXB";
-
-        Cursor cursor = db.rawQuery("SELECT * FROM " + tableName + " WHERE " + columnName + " = ?", new String[]{name});
-        int count = cursor.getCount();
-        cursor.close();
-        return count > 0;
-    }
     public void updatePublisherDetails(String id, String newName, String newAddress) {
         SQLiteDatabase db = this.getWritableDatabase();
         String tableName = "NXB";
@@ -213,6 +170,7 @@ public class Database extends SQLiteOpenHelper {
         db.update(tableName, contentValues, columnID + " = ?", new String[]{id});
         db.close();
     }
+
     public Cursor getEmployeeDetails(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
         String tableName = "NhanVien"; // Tên bảng
@@ -269,16 +227,18 @@ public class Database extends SQLiteOpenHelper {
 
     // Phương thức để tạo mã nhân viên mới
     public String generateID() {
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();
         String tableName = "NhanVien";
-        Cursor cursor = db.rawQuery("PRAGMA table_info(" + tableName + ")", null);
+        Cursor cursor = db.rawQuery("SELECT MAX(MaNhanVien) FROM " + tableName, null);
         int id = 0;
-        if (cursor.moveToFirst()) {
-            id = cursor.getInt(0);
+        if (cursor.moveToFirst() && !cursor.isNull(0)) {
+            String maxId = cursor.getString(0);
+            id = Integer.parseInt(maxId.replace("NV", ""));
         }
         cursor.close();
-        return String.format(Locale.getDefault(), "NV%04d", id + 1);
+        return String.format(Locale.getDefault(), "NV%01d", id + 1);
     }
+
     public void updateEmployeeDetails(String id, String newName, String newGender, String newPhone, String newAddress, String newUsername) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();

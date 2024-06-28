@@ -12,7 +12,6 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.book_store.model.Employee;
 
 public class EmployeeDetailsActivity extends AppCompatActivity {
 
@@ -20,8 +19,6 @@ public class EmployeeDetailsActivity extends AppCompatActivity {
     Button btnSuaThongTinCaNhan, btnDangXuat;
     Database dbHelper;
     String username;
-Employee employee;
-    // Activity Result Launcher
     private ActivityResultLauncher<Intent> editEmployeeLauncher;
 
     @Override

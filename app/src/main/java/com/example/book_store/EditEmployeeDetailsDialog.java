@@ -64,9 +64,7 @@ public class EditEmployeeDetailsDialog extends AppCompatActivity {
         String newTenDangNhap = etTenDangNhapMoi.getText().toString().trim();
 
         dbHelper.updateEmployeeDetails(employeeId, newTenNhanVien, newGioiTinh, newSoDienThoai, newDiaChi, newTenDangNhap);
-
-        // Trả kết quả về cho EmployeeDetailsActivity
         setResult(RESULT_OK);
-        finish(); // Đóng Dialog và quay lại màn hình trước đó
+        finish();
     }
 }

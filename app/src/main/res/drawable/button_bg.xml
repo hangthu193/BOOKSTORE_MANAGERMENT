@@ -3,5 +3,5 @@
 
     <gradient android:startColor="#ff6750a4"
         android:endColor="#ff6750a4"/> <!-- Màu nền -->
-    <corners android:radius="90dp" /><!-- Bo góc -->
+    <corners android:radius="20dp"/><!-- Bo góc -->
 </shape>

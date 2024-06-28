@@ -16,8 +16,7 @@
         android:layout_marginTop="35dp"
         android:fontFamily="serif"
         android:text="Thêm nhà xuất bản"
-        android:textColor="#ff6750a4"
-        android:textSize="35sp"
+        android:textSize="25sp"
         android:textStyle="bold" />
 
     <TableLayout
@@ -39,7 +38,6 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:text="Mã NXB"
-                android:textColor="@color/Gray"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -50,9 +48,7 @@
                 android:layout_weight="2"
                 android:gravity="center"
                 android:inputType="text"
-                android:textColor="#0771C5"
-                android:textSize="20sp"
-                android:hint="mã nhà xuất bản"/>
+                android:textSize="20sp"/>
         </TableRow>
 
         <TableRow
@@ -67,7 +63,6 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:text="Tên NXB"
-                android:textColor="@color/Gray"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -77,9 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:gravity="center"
-                android:hint="tên nhà xuất bản"
                 android:inputType="text"
-                android:textColor="#0771C5"
                 android:textSize="20sp" />
         </TableRow>
 
@@ -95,7 +88,6 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:text="Địa Chỉ"
-                android:textColor="@color/Gray"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -106,9 +98,7 @@
                 android:layout_weight="2"
                 android:gravity="center"
                 android:inputType="textPostalAddress"
-                android:textColor="#0771C5"
-                android:textSize="20sp"
-                android:hint="địa chỉ nhà xuất bản"/>
+                android:textSize="20sp"/>
         </TableRow>
 
     </TableLayout>
@@ -124,22 +114,22 @@
 
         <Button
             android:id="@+id/btnHuy"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_width="150dp"
+            android:layout_height="43dp"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/Gray"
+            android:background="@drawable/custom_btn_red"
             android:text="@string/btn_cancel"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnXacNhan"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_width="150dp"
+            android:layout_height="43dp"
             android:layout_marginStart="10dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/Purple"
+            android:background="@drawable/custom_btn"
             android:text="@string/btn_confirm"
             android:textColor="@color/white"
             android:textSize="18sp" />
