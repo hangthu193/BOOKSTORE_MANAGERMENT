@@ -2,8 +2,12 @@ package com.example.book_store;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.fragment.app.DialogFragment;
 
@@ -31,11 +35,14 @@ public class LogoutDialogFragment extends DialogFragment {
         return builder.create();
     }
 
-    private void logout() {
-        // Thực hiện hành động đăng xuất ở đây
-        // Ví dụ: chuyển về màn hình đăng nhập
-        getActivity().finish(); // Kết thúc activity hiện tại
-        // Intent intent = new Intent(getActivity(), LoginActivity.class);
-        // startActivity(intent);
+    public void logout() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("SessionPref", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+
+        Intent intent = new Intent(getActivity(), LoginActivity.class);
+        startActivity(intent);
+        getActivity().finish();
     }
 }
