@@ -74,6 +74,7 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(LoginActivity.this, Search.class);
             // Lưu trữ username trong SharedPreferences
             SharedPreferences sharedPreferences = getSharedPreferences("SessionPref", Context.MODE_PRIVATE);
+            sharedPreferences.getString("username",null);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("username", username);
             editor.apply();

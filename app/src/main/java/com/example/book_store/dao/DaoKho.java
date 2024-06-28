@@ -60,9 +60,6 @@ public class DaoKho {
             if (cursor != null) {
                 cursor.close();
             }
-            if (db != null) {
-                db.close();
-            }
         }
 
         return khoList;
@@ -79,7 +76,6 @@ public class DaoKho {
     }
     public long updateKho(Kho kho) {
         ContentValues values = new ContentValues();
-        values.put("MaKho", kho.getMaKho());
         values.put("MaSach", kho.getMaSach());
         values.put("NgayNhap", kho.getNgayNhap());
         values.put("SoLuongNhap", kho.getSoLuongNhap());
@@ -108,9 +104,6 @@ public class DaoKho {
         } finally {
             if (cursor != null) {
                 cursor.close();
-            }
-            if (db != null) {
-                db.close();
             }
         }
 

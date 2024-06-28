@@ -1,6 +1,8 @@
 package com.example.book_store.model;
 
-public class Kho {
+import java.io.Serializable;
+
+public class Kho implements Serializable {
     private String maKho;
     private String maSach;
     private String ngayNhap;

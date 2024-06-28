@@ -69,7 +69,7 @@ public class newpass extends AppCompatActivity {
                     return;
                 }
 
-                boolean isUpdated = dbHelper.updatePassword(db, manhanvien, newPassword);
+                boolean isUpdated = dbHelper.updatePassword(manhanvien, newPassword);
                 if (isUpdated) {
                     Toast.makeText(newpass.this, "Cập nhật mật khẩu thành công", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(newpass.this, Search.class);

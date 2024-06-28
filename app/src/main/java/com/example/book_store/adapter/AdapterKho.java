@@ -67,7 +67,7 @@ public class AdapterKho extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, KhoUpdate.class);
-                intent.putExtra("MaKho",kho.getMaKho());
+                intent.putExtra("Kho",kho);
                 context.startActivity(intent);
             }
         });

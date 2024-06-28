@@ -23,7 +23,7 @@ public class DaoSach {
 
     public DaoSach(Context mContext) {
         this.mContext = mContext;
-
+        this.dbHelper = new Database(mContext);
     }
 
 

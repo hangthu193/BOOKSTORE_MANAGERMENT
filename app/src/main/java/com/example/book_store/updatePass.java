@@ -3,6 +3,7 @@ package com.example.book_store;
 import static android.app.PendingIntent.getActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -31,9 +32,9 @@ public class updatePass extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_pass);
 
-//        edtCurrentPassword = findViewById(R.id.edtpassHienTai);
-//        edtNewPassword = findViewById(R.id.edtpassMoi1);
-//        edtConfirmPassword = findViewById(R.id.edtpassMoi2);
+        edtCurrentPassword = findViewById(R.id.edtpassHienTai);
+        edtNewPassword = findViewById(R.id.edtpassMoi1);
+        edtConfirmPassword = findViewById(R.id.edtpassMoi2);
         btnConfirm = findViewById(R.id.btnXacNhanDoiPass);
         btnBack = findViewById(R.id.btnThoatDoiMatKhau);
 
@@ -80,6 +81,11 @@ public class updatePass extends AppCompatActivity {
         // Call your method to change the password here
         // For example: changePassword(currentPassword, newPassword);
 
+        SharedPreferences sharedPreferences = getSharedPreferences("SessionPref",MODE_PRIVATE);
+        String username = sharedPreferences.getString("username",null);
+        Database db = new Database(updatePass.this);
+        String id = db.getIdUserWithUsername(username);
+        db.updatePassword(id,edtNewPassword.getText().toString());
         Toast.makeText(this, "Mật khẩu đã được thay đổi thành công", Toast.LENGTH_SHORT).show();
     }
 }

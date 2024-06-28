@@ -30,7 +30,6 @@ public class Database extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-
     }
     public void initializeDatabaseFromAssets() {
         if (!checkDatabaseExists()) {
@@ -119,8 +118,9 @@ public class Database extends SQLiteOpenHelper {
         return exists;
     }
 
-    public boolean updatePassword(SQLiteDatabase db, String manhanvien, String newPassword) {
+    public boolean updatePassword(String manhanvien, String newPassword) {
         try {
+            SQLiteDatabase db = this.getReadableDatabase();
             ContentValues values = new ContentValues();
             values.put("matkhau", newPassword);
 
@@ -249,4 +249,16 @@ public class Database extends SQLiteOpenHelper {
         contentValues.put("TenDangNhap", newUsername);
         db.update("NhanVien", contentValues, "MaNhanVien" + " = ?", new String[]{id});
     }
+
+    public String getIdUserWithUsername(String username){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String tableName = "NhanVien";
+        String columnUsername = "TenDangNhap";
+        Cursor cursor = db.rawQuery("SELECT MaNhanVien FROM " + tableName + " WHERE " + columnUsername + " = ?", new String[]{username});
+        cursor.moveToFirst();
+        String idUser = "";
+        idUser = cursor.getString(0);
+        cursor.close();
+        return  idUser;
+    };
 }
