@@ -27,69 +27,69 @@
         android:textStyle="bold" />
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        app:boxCornerRadiusTopStart="16dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        app:boxCornerRadiusBottomEnd="16dp"
-        app:boxStrokeColor="#FF0000"
-        app:boxStrokeWidth="3dp">
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        app:boxCornerRadiusTopStart="16dp"-->
+<!--        android:paddingStart="20dp"-->
+<!--        android:paddingEnd="20dp"-->
+<!--        app:boxCornerRadiusBottomEnd="16dp"-->
+<!--        app:boxStrokeColor="#FF0000"-->
+<!--        app:boxStrokeWidth="3dp">-->
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtpassHienTai"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="17dp"
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/edtpassHienTai"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="17dp"-->
 
-            android:hint="Mật khẩu hiện tại" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-
+<!--            android:hint="Mật khẩu hiện tại" />-->
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        app:boxCornerRadiusTopStart="16dp"
-        app:boxCornerRadiusBottomEnd="16dp"
-        app:boxStrokeColor="#FF0000"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        app:boxStrokeWidth="3dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtpassMoi1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="17dp"
-            android:hint="Mật khẩu mới" />
-    </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        app:boxCornerRadiusTopStart="16dp"
-        app:boxCornerRadiusBottomEnd="16dp"
-        app:boxStrokeColor="#FF0000"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        app:boxStrokeWidth="3dp">
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        app:boxCornerRadiusTopStart="16dp"-->
+<!--        app:boxCornerRadiusBottomEnd="16dp"-->
+<!--        app:boxStrokeColor="#FF0000"-->
+<!--        android:paddingStart="20dp"-->
+<!--        android:paddingEnd="20dp"-->
+<!--        app:boxStrokeWidth="3dp">-->
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtpassMoi2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="17dp"
-            android:hint="Nhập lại mật khẩu mới" />
-    </com.google.android.material.textfield.TextInputLayout>
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/edtpassMoi1"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="17dp"-->
+<!--            android:hint="Mật khẩu mới" />-->
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        app:boxCornerRadiusTopStart="16dp"-->
+<!--        app:boxCornerRadiusBottomEnd="16dp"-->
+<!--        app:boxStrokeColor="#FF0000"-->
+<!--        android:paddingStart="20dp"-->
+<!--        android:paddingEnd="20dp"-->
+<!--        app:boxStrokeWidth="3dp">-->
+
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/edtpassMoi2"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="17dp"-->
+<!--            android:hint="Nhập lại mật khẩu mới" />-->
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
 
     <Button
         android:id="@+id/btnXacNhanDoiPass"

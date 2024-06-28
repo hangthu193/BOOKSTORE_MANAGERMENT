@@ -18,6 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.book_store.Database;
 import com.example.book_store.MainActivity;
 import com.example.book_store.R;
+import com.example.book_store.Search;
 
 public class newpass extends AppCompatActivity {
 
@@ -71,7 +72,7 @@ public class newpass extends AppCompatActivity {
                 boolean isUpdated = dbHelper.updatePassword(db, manhanvien, newPassword);
                 if (isUpdated) {
                     Toast.makeText(newpass.this, "Cập nhật mật khẩu thành công", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(newpass.this, MainActivity.class);
+                    Intent intent = new Intent(newpass.this, Search.class);
                     startActivity(intent);
                     finish();
                 } else {

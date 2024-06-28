@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class EmployeeDetailsActivity extends AppCompatActivity {
 
     TextView tvMaNhanVien, tvTenNhanVien, tvGioiTinh, tvSoDienThoai, tvDiaChi, tvTenDangNhap;
-    Button btnSuaThongTinCaNhan, btnDangXuat;
+    Button btnSuaThongTinCaNhan, btnDangXuat, btndoipass;
     Database dbHelper;
     String username;
     private ActivityResultLauncher<Intent> editEmployeeLauncher;
@@ -61,6 +61,12 @@ public class EmployeeDetailsActivity extends AppCompatActivity {
         btnDangXuat.setOnClickListener(v -> {
             // Hiển thị dialog đăng xuất khi nhấn nút Đăng Xuất
             showLogoutDialog();
+        });
+
+        btndoipass = findViewById(R.id.btndoipass);
+        btndoipass.setOnClickListener(v -> {
+            Intent myIntent = new Intent(EmployeeDetailsActivity.this, updatePass.class);
+            startActivity(myIntent);
         });
     }
 

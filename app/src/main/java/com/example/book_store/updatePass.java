@@ -31,9 +31,9 @@ public class updatePass extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_pass);
 
-        edtCurrentPassword = findViewById(R.id.edtpassHienTai);
-        edtNewPassword = findViewById(R.id.edtpassMoi1);
-        edtConfirmPassword = findViewById(R.id.edtpassMoi2);
+//        edtCurrentPassword = findViewById(R.id.edtpassHienTai);
+//        edtNewPassword = findViewById(R.id.edtpassMoi1);
+//        edtConfirmPassword = findViewById(R.id.edtpassMoi2);
         btnConfirm = findViewById(R.id.btnXacNhanDoiPass);
         btnBack = findViewById(R.id.btnThoatDoiMatKhau);
 

@@ -147,9 +147,8 @@
 
         <Button
             android:id="@+id/btnSuaThongTinCaNhan"
-            android:layout_width="150dp"
+            android:layout_width="130dp"
             android:layout_height="43dp"
-            android:layout_marginEnd="10dp"
             android:layout_weight="1"
             android:background="@drawable/custom_btn"
             android:text="@string/btn_edit_profile"
@@ -157,9 +156,21 @@
             android:textSize="16sp"
             android:contentDescription="@string/btn_edit_profile" />
 
+
+        <Button
+            android:id="@+id/btndoipass"
+            android:layout_width="167dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_btn"
+            android:text="Đổi mật khẩu"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
         <Button
             android:id="@+id/btnDangXuat"
-            android:layout_width="150dp"
+            android:layout_width="140dp"
             android:layout_height="43dp"
             android:layout_marginStart="10dp"
             android:layout_weight="1"
@@ -168,7 +179,6 @@
             android:textColor="@color/white"
             android:textSize="16sp"
             android:contentDescription="@string/btn_logout" />
-
     </LinearLayout>
 
 </LinearLayout>
