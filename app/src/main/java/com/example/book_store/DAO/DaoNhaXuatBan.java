@@ -20,7 +20,7 @@ public class DaoNhaXuatBan {
     }
 
     // Lấy danh sách nhà xuất bản
-    public List<NhaXuatBan> layDanhSachNhaXuatBan(SQLiteDatabase db) {
+    public List<NhaXuatBan> layDanhSachNhaXuatBan() {
         List<NhaXuatBan> danhSach = new ArrayList<>();
         Cursor cursor = db.query("NXB", null, null, null, null, null, null);
         if (cursor != null && cursor.moveToFirst()) {
@@ -35,23 +35,30 @@ public class DaoNhaXuatBan {
         return danhSach;
     }
 
+
     // Thêm mới nhà xuất bản
-    public boolean themNhaXuatBan(String maNXB, String tenNXB, String diaChi) {
+    public boolean themNhaXuatBan(String id, String name, String address) {
+        if (checkPublisherExist(name)) {
+            return false; // Trả về false nếu tên nhà xuất bản đã tồn tại
+        }
+
         ContentValues values = new ContentValues();
-        values.put("MaNXB", maNXB);
-        values.put("TenNXB", tenNXB);
-        values.put("DiaChi", diaChi);
+        values.put("MaNXB", id);
+        values.put("TenNXB", name);
+        values.put("DiaChi", address);
         long result = db.insert("NXB", null, values);
         return result != -1;
     }
 
-    // Cập nhật thông tin nhà xuất bản
-   // public boolean capNhatNhaXuatBan(String maNXB, String tenNXB, String diaChi) {
-    //    ContentValues values = new ContentValues();
-    //    values.put("TenNXB", tenNXB);
-     //   values.put("DiaChi", diaChi);
+    // Kiểm tra sự tồn tại của nhà xuất bản
+    private boolean checkPublisherExist(String name) {
+        String[] columns = {"TenNXB"};
+        String selection = "TenNXB = ?";
+        String[] selectionArgs = {name};
+        Cursor cursor = db.query("NXB", columns, selection, selectionArgs, null, null, null);
+        int count = cursor.getCount();
+        cursor.close();
+        return count > 0;
+    }
 
-    //    int rowsAffected = db.update("NXB", values, "MaNXB = ?", new String[]{maNXB});
-      //  return rowsAffected > 0;
- //   }
 }

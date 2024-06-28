@@ -62,7 +62,7 @@ public class Sua_nxbActivity extends AppCompatActivity {
 
         dbHelper.updatePublisherDetails(maNXBToUpdate, tenNXB, diaChiNXB);
 
-        Toast.makeText(this, "Cập nhật nhà xuất bản thành công", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Sửa nhà xuất bản thành công", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, QuanLy_NxbActivity.class);
         startActivity(intent);
         finish();
