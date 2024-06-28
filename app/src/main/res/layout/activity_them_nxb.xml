@@ -16,7 +16,6 @@
         android:layout_marginTop="35dp"
         android:fontFamily="serif"
         android:text="Thêm nhà xuất bản"
-        android:textColor="@color/Purple"
         android:textSize="25sp"
         android:textStyle="bold" />
 
