@@ -2,10 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".KhoActivity">
+    tools:context=".KhoUpdate">
 
     <!-- Title TextView -->
     <TextView
@@ -13,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="Nhập Kho"
+        android:text="Cập nhật Kho"
         android:textAlignment="center"
         android:textSize="28sp"
         android:textStyle="bold"
@@ -104,14 +105,14 @@
         app:layout_constraintTop_toBottomOf="@+id/edtSoLuongNhap"
         app:layout_constraintWidth_percent="0.8"/>
 
-    <!-- Button Nhập Kho -->
+    <!-- Button Cập Nhật Kho -->
     <Button
-        android:id="@+id/btnNhapKho"
+        android:id="@+id/btnUpdateKho"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:background="@drawable/custom_btn"
-        android:text="Nhập Kho"
+        android:text="Cập Nhật Kho"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -129,5 +130,4 @@
         app:layout_constraintHorizontal_bias="0.146"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ongsach2" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

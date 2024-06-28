@@ -13,10 +13,11 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".KhoUpdate"
+            android:exported="false" />
+        <activity
             android:name=".SignupActivity"
-            android:exported="true"
-
-          >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -79,13 +80,11 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true" >
-
+            android:exported="true">
         </activity>
         <activity
             android:name=".Search"
             android:exported="true">
-
         </activity>
 
         <meta-data

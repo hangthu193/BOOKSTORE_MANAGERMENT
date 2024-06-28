@@ -2,17 +2,19 @@ package com.example.book_store.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.book_store.KhoUpdate;
 import com.example.book_store.R;
-import com.example.book_store.TacGia;
 import com.example.book_store.DAO.DaoKho;
-import com.example.book_store.DAO.DaoTacGia;
 import com.example.book_store.model.Kho;
+import com.example.book_store.updateAtivity;
 
 import java.util.ArrayList;
 
@@ -52,6 +54,7 @@ public class AdapterKho extends BaseAdapter {
         TextView txtngaynhap = (TextView) row.findViewById(R.id.txtngaynhap);
         TextView txtsoluong = (TextView) row.findViewById(R.id.txtsluong);
         TextView txtgianhap = row.findViewById((R.id.txtgianhap));
+        Button btncapnhat = row.findViewById(R.id.btnCapNhatKho);
 
         Kho kho = mylist.get(position);
         txtmakho.setText("Mã kho: " + kho.getMaKho());
@@ -60,6 +63,14 @@ public class AdapterKho extends BaseAdapter {
         txtsoluong.setText("Số lượng nhập: " + kho.getSoLuongNhap());
         txtgianhap.setText("Giá nhập: " + kho.getGiaNhap());
 
+        btncapnhat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, KhoUpdate.class);
+                intent.putExtra("MaKho",kho.getMaKho());
+                context.startActivity(intent);
+            }
+        });
         return row;
 
     }

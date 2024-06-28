@@ -1,41 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/txtmakho"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:text="Mã Kho"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:gravity="start"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnCapNhatKho"
+        app:layout_constraintHorizontal_bias="0" />
 
     <TextView
         android:id="@+id/txtmasach"
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:text="Mã Sách"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:gravity="start"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtmakho"
+        app:layout_constraintEnd_toStartOf="@+id/btnCapNhatKho"
+        app:layout_constraintHorizontal_bias="0" />
 
     <TextView
         android:id="@+id/txtngaynhap"
-        android:layout_width="match_parent"
-        android:layout_height="43dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:text="Ngày nhập"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:gravity="start"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtmasach"
+        app:layout_constraintEnd_toStartOf="@+id/btnCapNhatKho"
+        app:layout_constraintHorizontal_bias="0" />
 
     <TextView
         android:id="@+id/txtsluong"
-        android:layout_width="match_parent"
-        android:layout_height="38dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:text="Số lượng nhập"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:gravity="start"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtngaynhap"
+        app:layout_constraintEnd_toStartOf="@+id/btnCapNhatKho"
+        app:layout_constraintHorizontal_bias="0" />
 
     <TextView
         android:id="@+id/txtgianhap"
-        android:layout_width="match_parent"
-        android:layout_height="39dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:text="Giá nhập"
-        android:textStyle="bold" />
-</LinearLayout>
+        android:textStyle="bold"
+        android:gravity="start"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtsluong"
+        app:layout_constraintEnd_toStartOf="@+id/btnCapNhatKho"
+        app:layout_constraintHorizontal_bias="0" />
+
+    <Button
+        android:id="@+id/btnCapNhatKho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cập nhật kho"
+        app:layout_constraintStart_toEndOf="@+id/txtmakho"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtmakho"
+        android:background="@drawable/custom_btn"
+        app:backgroundTint="@null"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/txtgianhap"
+        app:layout_constraintVertical_bias="0.5"
+        android:layout_marginStart="8dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

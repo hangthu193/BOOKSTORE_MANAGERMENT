@@ -39,7 +39,7 @@
 
         android:background="@drawable/buttonmain"
         android:text="Thêm mới"
-        android:textAlignment="viewStart"
+        android:textAlignment="center"
         android:textColor="#100F0F"
         android:textStyle="bold"
         app:backgroundTint="@null"
